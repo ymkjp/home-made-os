@@ -1,0 +1,49 @@
+text size :    801(0x00321)
+data size :      6(0x00006)
+bss  size :      0(0x00000)
+
+0x00000024 : (.text)
+0x00000024 : _HariMain
+0x0000017C : _make_textbox
+0x00000282 : _api_openwin
+0x00000282 : (.text)
+0x000002A4 : _api_putstrwin
+0x000002A4 : (.text)
+0x000002CC : _api_boxfilwin
+0x000002CC : (.text)
+0x000002F4 : _api_getkey
+0x000002F4 : (.text)
+0x00000300 : _api_alloctimer
+0x00000300 : (.text)
+0x00000308 : _api_inittimer
+0x00000308 : (.text)
+0x0000031A : _api_settimer
+0x0000031A : (.text)
+0x0000032C : _osak_getbuflen
+0x0000032C : (.text)
+0x00000334 : __alloca
+0x00000334 : (.text)
+0x0000033C : (.text)
+0x0000033C : _HariStartup
+0x00000000 : (.data)
+0x00000000 : (.data)
+0x00000000 : (.data)
+0x00000000 : (.data)
+0x00000000 : (.data)
+0x00000000 : (.data)
+0x00000000 : (.data)
+0x00000000 : (.data)
+0x00000000 : (.data)
+0x00000000 : (.data)
+0x00016800 : (.data)
+0x00000000 : (.bss)
+0x00000000 : (.bss)
+0x00000000 : (.bss)
+0x00000000 : (.bss)
+0x00000000 : (.bss)
+0x00000000 : (.bss)
+0x00000000 : (.bss)
+0x00000000 : (.bss)
+0x00000000 : (.bss)
+0x00000000 : (.bss)
+0x00000000 : (.bss)

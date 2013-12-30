@@ -1,0 +1,102 @@
+     1 00000000                                 [FORMAT "WCOFF"]
+     2 00000000                                 [INSTRSET "i486p"]
+     3 00000000                                 [OPTIMIZE 1]
+     4 00000000                                 [OPTION 1]
+     5 00000000                                 [BITS 32]
+     6 00000000                                 	EXTERN	_adr.0
+     7 00000000                                 	EXTERN	_io_out8
+     8 00000000                                 	EXTERN	_io_in8
+     9 00000000                                 	EXTERN	_max.1
+    10 00000000                                 [FILE "rtc.c"]
+    11                                          [SECTION .data]
+    12 00000000                                 _adr.0:
+    13 00000000 32                              	DB	50
+    14 00000001 08                              	DB	8
+    15 00000002 07                              	DB	7
+    16 00000003 04                              	DB	4
+    17 00000004 02                              	DB	2
+    18 00000005 00                              	DB	0
+    19 00000006 09                              	DB	9
+    20 00000007                                 _max.1:
+    21 00000007 99                              	DB	-103
+    22 00000008 12                              	DB	18
+    23 00000009 31                              	DB	49
+    24 0000000A 23                              	DB	35
+    25 0000000B 59                              	DB	89
+    26 0000000C 60                              	DB	96
+    27 0000000D 99                              	DB	-103
+    28                                          [SECTION .text]
+    29 00000000                                 	GLOBAL	_rtc_get
+    30 00000000                                 _rtc_get:
+    31 00000000 55                              	PUSH	EBP
+    32 00000001 89 E5                           	MOV	EBP,ESP
+    33 00000003 57                              	PUSH	EDI
+    34 00000004 56                              	PUSH	ESI
+    35 00000005 53                              	PUSH	EBX
+    36 00000006 50                              	PUSH	EAX
+    37 00000007 83 C8 FF                        	OR	EAX,-1
+    38 0000000A 8B 75 08                        	MOV	ESI,DWORD [8+EBP]
+    39 0000000D C7 45 F0 00000000               	MOV	DWORD [-16+EBP],0
+    40 00000014 83 FE 05                        	CMP	ESI,5
+    41 00000017 7E 08                           	JLE	L3
+    42 00000019                                 L1:
+    43 00000019 8D 65 F4                        	LEA	ESP,DWORD [-12+EBP]
+    44 0000001C 5B                              	POP	EBX
+    45 0000001D 5E                              	POP	ESI
+    46 0000001E 5F                              	POP	EDI
+    47 0000001F 5D                              	POP	EBP
+    48 00000020 C3                              	RET
+    49 00000021                                 L3:
+    50 00000021 0F B6 86 [00000000]             	MOVZX	EAX,BYTE [_adr.0+ESI]
+    51 00000028 50                              	PUSH	EAX
+    52 00000029 31 FF                           	XOR	EDI,EDI
+    53 0000002B 6A 70                           	PUSH	112
+    54 0000002D E8 [00000000]                   	CALL	_io_out8
+    55 00000032 6A 71                           	PUSH	113
+    56 00000034 E8 [00000000]                   	CALL	_io_in8
+    57 00000039 88 C3                           	MOV	BL,AL
+    58 0000003B 0F B6 86 [00000000]             	MOVZX	EAX,BYTE [_adr.0+ESI]
+    59 00000042 50                              	PUSH	EAX
+    60 00000043 6A 70                           	PUSH	112
+    61 00000045 E8 [00000000]                   	CALL	_io_out8
+    62 0000004A 6A 71                           	PUSH	113
+    63 0000004C E8 [00000000]                   	CALL	_io_in8
+    64 00000051 83 C4 18                        	ADD	ESP,24
+    65 00000054 88 C1                           	MOV	CL,AL
+    66 00000056 38 C3                           	CMP	BL,AL
+    67 00000058 74 45                           	JE	L10
+    68 0000005A                                 L7:
+    69 0000005A BF 00000001                     	MOV	EDI,1
+    70 0000005F                                 L6:
+    71 0000005F 85 F6                           	TEST	ESI,ESI
+    72 00000061 75 1E                           	JNE	L5
+    73 00000063 88 C8                           	MOV	AL,CL
+    74 00000065 89 CA                           	MOV	EDX,ECX
+    75 00000067 C0 E8 04                        	SHR	AL,4
+    76 0000006A 83 E2 0F                        	AND	EDX,15
+    77 0000006D 0F B6 C0                        	MOVZX	EAX,AL
+    78 00000070 6B C0 0A                        	IMUL	EAX,EAX,10
+    79 00000073 01 D0                           	ADD	EAX,EDX
+    80 00000075 BE 00000006                     	MOV	ESI,6
+    81 0000007A 6B C0 64                        	IMUL	EAX,EAX,100
+    82 0000007D 47                              	INC	EDI
+    83 0000007E 89 45 F0                        	MOV	DWORD [-16+EBP],EAX
+    84 00000081                                 L5:
+    85 00000081 85 FF                           	TEST	EDI,EDI
+    86 00000083 75 9C                           	JNE	L3
+    87 00000085 88 C8                           	MOV	AL,CL
+    88 00000087 89 CA                           	MOV	EDX,ECX
+    89 00000089 C0 E8 04                        	SHR	AL,4
+    90 0000008C 83 E2 0F                        	AND	EDX,15
+    91 0000008F 0F B6 C0                        	MOVZX	EAX,AL
+    92 00000092 6B C0 0A                        	IMUL	EAX,EAX,10
+    93 00000095 01 D0                           	ADD	EAX,EDX
+    94 00000097 03 45 F0                        	ADD	EAX,DWORD [-16+EBP]
+    95 0000009A E9 FFFFFF7A                     	JMP	L1
+    96 0000009F                                 L10:
+    97 0000009F 83 E0 0F                        	AND	EAX,15
+    98 000000A2 3C 09                           	CMP	AL,9
+    99 000000A4 77 B4                           	JA	L7
+   100 000000A6 38 8E [00000007]                	CMP	BYTE [_max.1+ESI],CL
+   101 000000AC 73 B1                           	JAE	L6
+   102 000000AE EB AA                           	JMP	L7

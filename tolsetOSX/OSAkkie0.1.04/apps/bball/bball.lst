@@ -1,0 +1,132 @@
+     1 00000000                                 [FORMAT "WCOFF"]
+     2 00000000                                 [INSTRSET "i486p"]
+     3 00000000                                 [OPTIMIZE 1]
+     4 00000000                                 [OPTION 1]
+     5 00000000                                 [BITS 32]
+     6 00000000                                 	EXTERN	_osak_getbuflen
+     7 00000000                                 	EXTERN	__alloca
+     8 00000000                                 	EXTERN	_api_openwin
+     9 00000000                                 	EXTERN	_api_boxfilwin
+    10 00000000                                 	EXTERN	_api_getkey
+    11 00000000                                 	EXTERN	_api_end
+    12 00000000                                 	EXTERN	_table.0
+    13 00000000                                 	EXTERN	_api_linewin
+    14 00000000                                 [FILE "bball.c"]
+    15                                          [SECTION .data]
+    16 00000000                                 _table.0:
+    17 00000000 000000CC                        	DD	204
+    18 00000004 00000081                        	DD	129
+    19 00000008 000000C3                        	DD	195
+    20 0000000C 0000005A                        	DD	90
+    21 00000010 000000AC                        	DD	172
+    22 00000014 0000003A                        	DD	58
+    23 00000018 00000089                        	DD	137
+    24 0000001C 00000026                        	DD	38
+    25 00000020 00000062                        	DD	98
+    26 00000024 00000022                        	DD	34
+    27 00000028 0000003D                        	DD	61
+    28 0000002C 0000002E                        	DD	46
+    29 00000030 0000001F                        	DD	31
+    30 00000034 00000049                        	DD	73
+    31 00000038 0000000F                        	DD	15
+    32 0000003C 0000006E                        	DD	110
+    33 00000040 0000000F                        	DD	15
+    34 00000044 00000094                        	DD	148
+    35 00000048 0000001F                        	DD	31
+    36 0000004C 000000B9                        	DD	185
+    37 00000050 0000003D                        	DD	61
+    38 00000054 000000D4                        	DD	212
+    39 00000058 00000062                        	DD	98
+    40 0000005C 000000E0                        	DD	224
+    41 00000060 00000089                        	DD	137
+    42 00000064 000000DC                        	DD	220
+    43 00000068 000000AC                        	DD	172
+    44 0000006C 000000C8                        	DD	200
+    45 00000070 000000C3                        	DD	195
+    46 00000074 000000A8                        	DD	168
+    47 00000078 000000CC                        	DD	204
+    48 0000007C 00000081                        	DD	129
+    49 00000080                                 LC0:
+    50 00000080 62 62 61 6C 6C 00               	DB	"bball",0x00
+    51                                          [SECTION .text]
+    52 00000000                                 	GLOBAL	_HariMain
+    53 00000000                                 _HariMain:
+    54 00000000 55                              	PUSH	EBP
+    55 00000001 89 E5                           	MOV	EBP,ESP
+    56 00000003 57                              	PUSH	EDI
+    57 00000004 56                              	PUSH	ESI
+    58 00000005 31 F6                           	XOR	ESI,ESI
+    59 00000007 53                              	PUSH	EBX
+    60 00000008 51                              	PUSH	ECX
+    61 00000009 89 65 F0                        	MOV	DWORD [-16+EBP],ESP
+    62 0000000C E8 [00000000]                   	CALL	_osak_getbuflen
+    63 00000011 69 C0 0000C7F8                  	IMUL	EAX,EAX,51192
+    64 00000017 83 C0 10                        	ADD	EAX,16
+    65 0000001A E8 [00000000]                   	CALL	__alloca
+    66 0000001F 8D 44 24 0F                     	LEA	EAX,DWORD [15+ESP]
+    67 00000023 68 [00000080]                   	PUSH	LC0
+    68 00000028 6A FF                           	PUSH	-1
+    69 0000002A 83 E0 F0                        	AND	EAX,-16
+    70 0000002D 68 000000ED                     	PUSH	237
+    71 00000032 68 000000D8                     	PUSH	216
+    72 00000037 50                              	PUSH	EAX
+    73 00000038 E8 [00000000]                   	CALL	_api_openwin
+    74 0000003D 6A 00                           	PUSH	0
+    75 0000003F 68 000000E4                     	PUSH	228
+    76 00000044 89 C7                           	MOV	EDI,EAX
+    77 00000046 68 000000CF                     	PUSH	207
+    78 0000004B 6A 1D                           	PUSH	29
+    79 0000004D 6A 08                           	PUSH	8
+    80 0000004F 50                              	PUSH	EAX
+    81 00000050 E8 [00000000]                   	CALL	_api_boxfilwin
+    82 00000055 83 C4 2C                        	ADD	ESP,44
+    83 00000058                                 L13:
+    84 00000058 8D 5E 01                        	LEA	EBX,DWORD [1+ESI]
+    85 0000005B 83 FB 0F                        	CMP	EBX,15
+    86 0000005E 7F 1C                           	JG	L20
+    87 00000060                                 L12:
+    88 00000060 89 DA                           	MOV	EDX,EBX
+    89 00000062 29 F2                           	SUB	EDX,ESI
+    90 00000064 83 FA 07                        	CMP	EDX,7
+    91 00000067 7E 09                           	JLE	L10
+    92 00000069 B8 0000000F                     	MOV	EAX,15
+    93 0000006E 29 D0                           	SUB	EAX,EDX
+    94 00000070 89 C2                           	MOV	EDX,EAX
+    95 00000072                                 L10:
+    96 00000072 85 D2                           	TEST	EDX,EDX
+    97 00000074 75 29                           	JNE	L21
+    98 00000076                                 L8:
+    99 00000076 43                              	INC	EBX
+   100 00000077 83 FB 0F                        	CMP	EBX,15
+   101 0000007A 7E E4                           	JLE	L12
+   102 0000007C                                 L20:
+   103 0000007C 46                              	INC	ESI
+   104 0000007D 83 FE 0E                        	CMP	ESI,14
+   105 00000080 7E D6                           	JLE	L13
+   106 00000082                                 L14:
+   107 00000082 6A 01                           	PUSH	1
+   108 00000084 E8 [00000000]                   	CALL	_api_getkey
+   109 00000089 5A                              	POP	EDX
+   110 0000008A 83 F8 0A                        	CMP	EAX,10
+   111 0000008D 75 F3                           	JNE	L14
+   112 0000008F E8 [00000000]                   	CALL	_api_end
+   113 00000094 8B 65 F0                        	MOV	ESP,DWORD [-16+EBP]
+   114 00000097 8D 65 F4                        	LEA	ESP,DWORD [-12+EBP]
+   115 0000009A 5B                              	POP	EBX
+   116 0000009B 5E                              	POP	ESI
+   117 0000009C 5F                              	POP	EDI
+   118 0000009D 5D                              	POP	EBP
+   119 0000009E C3                              	RET
+   120 0000009F                                 L21:
+   121 0000009F B8 00000008                     	MOV	EAX,8
+   122 000000A4 29 D0                           	SUB	EAX,EDX
+   123 000000A6 50                              	PUSH	EAX
+   124 000000A7 B8 [00000000]                   	MOV	EAX,_table.0
+   125 000000AC FF 74 D8 04                     	PUSH	DWORD [4+EAX+EBX*8]
+   126 000000B0 FF 34 D8                        	PUSH	DWORD [EAX+EBX*8]
+   127 000000B3 FF 74 F0 04                     	PUSH	DWORD [4+EAX+ESI*8]
+   128 000000B7 FF 34 F0                        	PUSH	DWORD [EAX+ESI*8]
+   129 000000BA 57                              	PUSH	EDI
+   130 000000BB E8 [00000000]                   	CALL	_api_linewin
+   131 000000C0 83 C4 18                        	ADD	ESP,24
+   132 000000C3 EB B1                           	JMP	L8

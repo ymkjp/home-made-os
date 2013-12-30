@@ -1,0 +1,84 @@
+OS_ROOT     = ../../
+TOOLPATH    = $(OS_ROOT)../z_tools/
+INCPATH     = $(OS_ROOT)../z_tools/haribote/
+APILIBPATH  = $(OS_ROOT)apilib/
+OSAKKIEPATH = $(OS_ROOT)osakkie/
+
+MAKE     = make -r
+NASK     = $(TOOLPATH)nask
+CC1      = $(TOOLPATH)gocc1 -I$(INCPATH) -I../ -Os -Wall -quiet
+GAS2NASK = $(TOOLPATH)gas2nask -a
+OBJ2BIM  = $(TOOLPATH)obj2bim
+MAKEFONT = $(TOOLPATH)makefont
+BIN2OBJ  = $(TOOLPATH)bin2obj
+BIM2HRB  = $(TOOLPATH)bim2hrb
+BIM2BIN  = $(TOOLPATH)bim2bin
+RULEFILE = ../haribote.rul
+EDIMG    = $(TOOLPATH)edimg
+IMGTOL   = $(TOOLPATH)imgtol
+GOLIB    = $(TOOLPATH)golib00
+COPY     = cp
+DEL      = rm -f
+
+# デフォルト動作
+
+default :
+	$(MAKE) -C $(APILIBPATH)
+	$(MAKE) $(APP).hrb
+
+# ファイル生成規則
+
+$(APP).bim : $(APP).obj $(OBJS) $(APILIBPATH)apilib.lib Makefile ../app_make.txt
+	$(OBJ2BIM) \
+		@$(RULEFILE) out:$(APP).bim map:$(APP).map stack:$(STACK) \
+		$(APP).obj $(OBJS) $(APILIBPATH)apilib.lib
+
+osakkie.img : $(OSAKKIEPATH)ipl.bin $(OSAKKIEPATH)osakkie.sys $(OSAKKIEPATH)nihongo.fnt \
+				$(OS_ROOT)osakkie.hsf $(APP).hrb Makefile ../app_make.txt
+	$(EDIMG) \
+		imgin:$(TOOLPATH)fdimg0at.tek \
+		wbinimg src:$(OSAKKIEPATH)ipl.bin len:512 from:0 to:0 \
+		copy from:$(OSAKKIEPATH)osakkie.sys to:@: \
+		copy from:$(OSAKKIEPATH)nihongo.fnt to:@: \
+		copy from:$(OS_ROOT)osakkie.hsf to:@: \
+		copy from:$(OS_ROOT)media/shuri.jpg to:@: \
+		copy from:$(OS_ROOT)media/stbeep.bmp to:@: \
+		copy from:$(APP).hrb to:@: \
+		imgout:osakkie.img
+
+# 一般規則
+
+%.gas : %.c ../apilib.h Makefile ../app_make.txt
+	$(CC1) -o $*.gas $*.c
+
+%.nas : %.gas Makefile ../app_make.txt
+	$(GAS2NASK) $*.gas $*.nas
+
+%.obj : %.nas Makefile ../app_make.txt
+	$(NASK) $*.nas $*.obj $*.lst
+
+%.org : %.bim Makefile ../app_make.txt
+	$(BIM2HRB) $(APP).bim $(APP).org $(MALLOC)
+
+%.hrb : %.org Makefile ../app_make.txt
+	$(BIM2BIN) -osacmp in:$*.org out:$*.hrb
+
+# コマンド
+
+run :
+	$(MAKE) -C $(APILIBPATH)
+	$(MAKE) -C $(OS_ROOT)osakkie
+	$(MAKE) osakkie.img
+	$(COPY) osakkie.img ../../../z_tools/qemu/fdimage0.bin
+	$(MAKE) -C $(TOOLPATH)qemu
+
+clean :
+	-$(DEL) $(APP).obj
+	-$(DEL) *.lst
+	-$(DEL) *.map
+	-$(DEL) *.bim
+	-$(DEL) osakkie.img
+
+cleanall :
+	$(MAKE) clean
+	-$(DEL) $(APP).hrb

@@ -1,0 +1,141 @@
+     1 00000000                                 [FORMAT "WCOFF"]
+     2 00000000                                 [INSTRSET "i486p"]
+     3 00000000                                 [OPTIMIZE 1]
+     4 00000000                                 [OPTION 1]
+     5 00000000                                 [BITS 32]
+     6 00000000                                 	EXTERN	_osak_getbuflen
+     7 00000000                                 	EXTERN	__alloca
+     8 00000000                                 	EXTERN	_osak_initpicture
+     9 00000000                                 	EXTERN	_api_openwin
+    10 00000000                                 	EXTERN	_api_alloctimer
+    11 00000000                                 	EXTERN	_api_inittimer
+    12 00000000                                 	EXTERN	_osak_drawpicture
+    13 00000000                                 	EXTERN	_osak_freepicture
+    14 00000000                                 	EXTERN	_api_beep
+    15 00000000                                 	EXTERN	_api_closewin
+    16 00000000                                 	EXTERN	_api_end
+    17 00000000                                 	EXTERN	_api_putstr0
+    18 00000000                                 	EXTERN	_api_settimer
+    19 00000000                                 	EXTERN	_api_getkey
+    20 00000000                                 [FILE "stbeep.c"]
+    21                                          [SECTION .data]
+    22 00000000                                 LC0:
+    23 00000000 73 74 62 65 65 70 2E 62 6D 70   	DB	"stbeep.bmp",0x00
+       0000000A 00 
+    24 0000000B                                 LC2:
+    25 0000000B 53 54 20 42 65 65 70 20 5B 54   	DB	"ST Beep [Toho Line]",0x00
+       00000015 6F 68 6F 20 4C 69 6E 65 5D 00 
+    26 0000001F                                 LC1:
+    27 0000001F 73 74 62 65 65 70 2E 62 6D 70   	DB	"stbeep.bmp not found.",0x0A,0x00
+       00000029 20 6E 6F 74 20 66 6F 75 6E 64 
+       00000033 2E 0A 00 
+    28                                          [SECTION .text]
+    29 00000000                                 	GLOBAL	_HariMain
+    30 00000000                                 _HariMain:
+    31 00000000 55                              	PUSH	EBP
+    32 00000001 89 E5                           	MOV	EBP,ESP
+    33 00000003 57                              	PUSH	EDI
+    34 00000004 56                              	PUSH	ESI
+    35 00000005 53                              	PUSH	EBX
+    36 00000006 51                              	PUSH	ECX
+    37 00000007 89 65 F0                        	MOV	DWORD [-16+EBP],ESP
+    38 0000000A E8 [00000000]                   	CALL	_osak_getbuflen
+    39 0000000F 69 C0 0000988A                  	IMUL	EAX,EAX,39050
+    40 00000015 83 C0 12                        	ADD	EAX,18
+    41 00000018 83 E0 FC                        	AND	EAX,-4
+    42 0000001B E8 [00000000]                   	CALL	__alloca
+    43 00000020 8D 5C 24 0F                     	LEA	EBX,DWORD [15+ESP]
+    44 00000024 68 [00000000]                   	PUSH	LC0
+    45 00000029 83 E3 F0                        	AND	EBX,-16
+    46 0000002C E8 [00000000]                   	CALL	_osak_initpicture
+    47 00000031 89 C7                           	MOV	EDI,EAX
+    48 00000033 85 C0                           	TEST	EAX,EAX
+    49 00000035 5A                              	POP	EDX
+    50 00000036 0F 88 00000098                  	JS	L3
+    51 0000003C                                 L2:
+    52 0000003C 68 [0000000B]                   	PUSH	LC2
+    53 00000041 6A FF                           	PUSH	-1
+    54 00000043 6A 64                           	PUSH	100
+    55 00000045 68 00000163                     	PUSH	355
+    56 0000004A 53                              	PUSH	EBX
+    57 0000004B E8 [00000000]                   	CALL	_api_openwin
+    58 00000050 89 C6                           	MOV	ESI,EAX
+    59 00000052 E8 [00000000]                   	CALL	_api_alloctimer
+    60 00000057 68 00000080                     	PUSH	128
+    61 0000005C 89 C3                           	MOV	EBX,EAX
+    62 0000005E 50                              	PUSH	EAX
+    63 0000005F E8 [00000000]                   	CALL	_api_inittimer
+    64 00000064 6A 15                           	PUSH	21
+    65 00000066 6A 02                           	PUSH	2
+    66 00000068 57                              	PUSH	EDI
+    67 00000069 56                              	PUSH	ESI
+    68 0000006A E8 [00000000]                   	CALL	_osak_drawpicture
+    69 0000006F 83 C4 2C                        	ADD	ESP,44
+    70 00000072 57                              	PUSH	EDI
+    71 00000073 E8 [00000000]                   	CALL	_osak_freepicture
+    72 00000078 68 0008F688                     	PUSH	587400
+    73 0000007D E8 [00000000]                   	CALL	_api_beep
+    74 00000082 6A 32                           	PUSH	50
+    75 00000084 53                              	PUSH	EBX
+    76 00000085 E8 0000005F                     	CALL	_waittimer
+    77 0000008A 6A 00                           	PUSH	0
+    78 0000008C E8 [00000000]                   	CALL	_api_beep
+    79 00000091 68 00000096                     	PUSH	150
+    80 00000096 53                              	PUSH	EBX
+    81 00000097 E8 0000004D                     	CALL	_waittimer
+    82 0000009C 68 00017ED0                     	PUSH	98000
+    83 000000A1 E8 [00000000]                   	CALL	_api_beep
+    84 000000A6 83 C4 20                        	ADD	ESP,32
+    85 000000A9 68 0000012C                     	PUSH	300
+    86 000000AE 53                              	PUSH	EBX
+    87 000000AF E8 00000035                     	CALL	_waittimer
+    88 000000B4 6A 00                           	PUSH	0
+    89 000000B6 E8 [00000000]                   	CALL	_api_beep
+    90 000000BB 56                              	PUSH	ESI
+    91 000000BC E8 [00000000]                   	CALL	_api_closewin
+    92 000000C1 E8 [00000000]                   	CALL	_api_end
+    93 000000C6 83 C4 10                        	ADD	ESP,16
+    94 000000C9 8B 65 F0                        	MOV	ESP,DWORD [-16+EBP]
+    95 000000CC 8D 65 F4                        	LEA	ESP,DWORD [-12+EBP]
+    96 000000CF 5B                              	POP	EBX
+    97 000000D0 5E                              	POP	ESI
+    98 000000D1 5F                              	POP	EDI
+    99 000000D2 5D                              	POP	EBP
+   100 000000D3 C3                              	RET
+   101 000000D4                                 L3:
+   102 000000D4 68 [0000001F]                   	PUSH	LC1
+   103 000000D9 E8 [00000000]                   	CALL	_api_putstr0
+   104 000000DE E8 [00000000]                   	CALL	_api_end
+   105 000000E3 58                              	POP	EAX
+   106 000000E4 E9 FFFFFF53                     	JMP	L2
+   107 000000E9                                 	GLOBAL	_waittimer
+   108 000000E9                                 _waittimer:
+   109 000000E9 55                              	PUSH	EBP
+   110 000000EA 89 E5                           	MOV	EBP,ESP
+   111 000000EC 53                              	PUSH	EBX
+   112 000000ED FF 75 0C                        	PUSH	DWORD [12+EBP]
+   113 000000F0 FF 75 08                        	PUSH	DWORD [8+EBP]
+   114 000000F3 E8 [00000000]                   	CALL	_api_settimer
+   115 000000F8 58                              	POP	EAX
+   116 000000F9 5A                              	POP	EDX
+   117 000000FA                                 L5:
+   118 000000FA 6A 01                           	PUSH	1
+   119 000000FC E8 [00000000]                   	CALL	_api_getkey
+   120 00000101 89 C3                           	MOV	EBX,EAX
+   121 00000103 58                              	POP	EAX
+   122 00000104 83 FB 51                        	CMP	EBX,81
+   123 00000107 74 0F                           	JE	L9
+   124 00000109 83 FB 71                        	CMP	EBX,113
+   125 0000010C 74 0A                           	JE	L9
+   126 0000010E                                 L8:
+   127 0000010E 83 C3 80                        	ADD	EBX,-128
+   128 00000111 75 E7                           	JNE	L5
+   129 00000113 8B 5D FC                        	MOV	EBX,DWORD [-4+EBP]
+   130 00000116 C9                              	LEAVE
+   131 00000117 C3                              	RET
+   132 00000118                                 L9:
+   133 00000118 6A 00                           	PUSH	0
+   134 0000011A E8 [00000000]                   	CALL	_api_beep
+   135 0000011F E8 [00000000]                   	CALL	_api_end
+   136 00000124 58                              	POP	EAX
+   137 00000125 EB E7                           	JMP	L8

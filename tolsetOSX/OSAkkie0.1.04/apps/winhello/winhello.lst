@@ -1,0 +1,81 @@
+     1 00000000                                 [FORMAT "WCOFF"]
+     2 00000000                                 [INSTRSET "i486p"]
+     3 00000000                                 [OPTIMIZE 1]
+     4 00000000                                 [OPTION 1]
+     5 00000000                                 [BITS 32]
+     6 00000000                                 	EXTERN	_osak_getbuflen
+     7 00000000                                 	EXTERN	__alloca
+     8 00000000                                 	EXTERN	_api_openwin
+     9 00000000                                 	EXTERN	_api_boxfilwin
+    10 00000000                                 	EXTERN	_api_putstrwin
+    11 00000000                                 	EXTERN	_osak_putministrwin
+    12 00000000                                 	EXTERN	_api_getkey
+    13 00000000                                 	EXTERN	_api_closewin
+    14 00000000                                 	EXTERN	_api_end
+    15 00000000                                 [FILE "winhello.c"]
+    16                                          [SECTION .data]
+    17 00000000                                 LC0:
+    18 00000000 68 65 6C 6C 6F 21 00            	DB	"hello!",0x00
+    19 00000007                                 LC1:
+    20 00000007 4F 53 41 6B 6B 69 65 20 77 6F   	DB	"OSAkkie world!?",0x00
+       00000011 72 6C 64 21 3F 00 
+    21                                          [SECTION .text]
+    22 00000000                                 	GLOBAL	_HariMain
+    23 00000000                                 _HariMain:
+    24 00000000 55                              	PUSH	EBP
+    25 00000001 89 E5                           	MOV	EBP,ESP
+    26 00000003 56                              	PUSH	ESI
+    27 00000004 53                              	PUSH	EBX
+    28 00000005 89 E6                           	MOV	ESI,ESP
+    29 00000007 E8 [00000000]                   	CALL	_osak_getbuflen
+    30 0000000C 69 C0 00002EE0                  	IMUL	EAX,EAX,12000
+    31 00000012 83 C0 10                        	ADD	EAX,16
+    32 00000015 E8 [00000000]                   	CALL	__alloca
+    33 0000001A 8D 44 24 0F                     	LEA	EAX,DWORD [15+ESP]
+    34 0000001E 68 [00000000]                   	PUSH	LC0
+    35 00000023 6A FF                           	PUSH	-1
+    36 00000025 83 E0 F0                        	AND	EAX,-16
+    37 00000028 6A 50                           	PUSH	80
+    38 0000002A 68 00000096                     	PUSH	150
+    39 0000002F 50                              	PUSH	EAX
+    40 00000030 E8 [00000000]                   	CALL	_api_openwin
+    41 00000035 68 000000F0                     	PUSH	240
+    42 0000003A 6A 49                           	PUSH	73
+    43 0000003C 89 C3                           	MOV	EBX,EAX
+    44 0000003E 68 0000008D                     	PUSH	141
+    45 00000043 6A 1C                           	PUSH	28
+    46 00000045 6A 08                           	PUSH	8
+    47 00000047 50                              	PUSH	EAX
+    48 00000048 E8 [00000000]                   	CALL	_api_boxfilwin
+    49 0000004D 83 C4 2C                        	ADD	ESP,44
+    50 00000050 68 [00000007]                   	PUSH	LC1
+    51 00000055 6A 10                           	PUSH	16
+    52 00000057 6A 07                           	PUSH	7
+    53 00000059 6A 1E                           	PUSH	30
+    54 0000005B 6A 10                           	PUSH	16
+    55 0000005D 53                              	PUSH	EBX
+    56 0000005E E8 [00000000]                   	CALL	_api_putstrwin
+    57 00000063 68 [00000007]                   	PUSH	LC1
+    58 00000068 6A 10                           	PUSH	16
+    59 0000006A 68 00FFFFFF                     	PUSH	16777215
+    60 0000006F 6A 32                           	PUSH	50
+    61 00000071 6A 10                           	PUSH	16
+    62 00000073 53                              	PUSH	EBX
+    63 00000074 E8 [00000000]                   	CALL	_osak_putministrwin
+    64 00000079 83 C4 30                        	ADD	ESP,48
+    65 0000007C                                 L2:
+    66 0000007C 6A 01                           	PUSH	1
+    67 0000007E E8 [00000000]                   	CALL	_api_getkey
+    68 00000083 5A                              	POP	EDX
+    69 00000084 83 F8 0A                        	CMP	EAX,10
+    70 00000087 75 F3                           	JNE	L2
+    71 00000089 53                              	PUSH	EBX
+    72 0000008A E8 [00000000]                   	CALL	_api_closewin
+    73 0000008F E8 [00000000]                   	CALL	_api_end
+    74 00000094 58                              	POP	EAX
+    75 00000095 89 F4                           	MOV	ESP,ESI
+    76 00000097 8D 65 F8                        	LEA	ESP,DWORD [-8+EBP]
+    77 0000009A 5B                              	POP	EBX
+    78 0000009B 5E                              	POP	ESI
+    79 0000009C 5D                              	POP	EBP
+    80 0000009D C3                              	RET

@@ -1,0 +1,223 @@
+     1 00000000                                 ; haribote-ipl
+     2 00000000                                 ; TAB=4
+     3 00000000                                 
+     4                                          		ORG		0x7c00			; このプログラムがどこに読み込まれるのか
+     5 00007C00                                 
+     6 00007C00                                 ; 以下は標準的なFAT12フォーマットフロッピーディスクのための記述
+     7 00007C00                                 
+     8 00007C00 EB 4E                           		JMP		entry
+     9 00007C02 90                              		DB		0x90
+    10 00007C03 4F 53 41 4B 4B 49 45 20         		DB		"OSAKKIE "		; ブートセクタの名前を自由に書いてよい（8バイト）
+    11 00007C0B 0200                            		DW		512				; 1セクタの大きさ（512にしなければいけない）
+    12 00007C0D 01                              		DB		1				; クラスタの大きさ（1セクタにしなければいけない）
+    13 00007C0E 0001                            		DW		1				; FATがどこから始まるか（普通は1セクタ目からにする）
+    14 00007C10 02                              		DB		2				; FATの個数（2にしなければいけない）
+    15 00007C11 00E0                            		DW		224				; ルートディレクトリ領域の大きさ（普通は224エントリにする）
+    16 00007C13 0B40                            		DW		2880			; このドライブの大きさ（2880セクタにしなければいけない）
+    17 00007C15 F0                              		DB		0xf0			; メディアのタイプ（0xf0にしなければいけない）
+    18 00007C16 0009                            		DW		9				; FAT領域の長さ（9セクタにしなければいけない）
+    19 00007C18 0012                            		DW		18				; 1トラックにいくつのセクタがあるか（18にしなければいけない）
+    20 00007C1A 0002                            		DW		2				; ヘッドの数（2にしなければいけない）
+    21 00007C1C 00000000                        		DD		0				; パーティションを使ってないのでここは必ず0
+    22 00007C20 00000B40                        		DD		2880			; このドライブ大きさをもう一度書く
+    23 00007C24 00 00 29                        		DB		0,0,0x29		; よくわからないけどこの値にしておくといいらしい
+    24 00007C27 00397033                        		DD		0x00397033		; たぶんボリュームシリアル番号
+    25 00007C2B 4F 53 41 4B 4B 49 45 20 20 20   		DB		"OSAKKIE    "	; ディスクの名前（11バイト）
+       00007C35 20 
+    26 00007C36 46 41 54 31 32 20 20 20         		DB		"FAT12   "		; フォーマットの名前（8バイト）
+    27 00007C3E 00 00 00 00 00 00 00 00 00 00   		RESB	18				; とりあえず18バイトあけておく
+       00007C48 00 00 00 00 00 00 00 00 
+    28 00007C50                                 
+    29 00007C50                                 ; プログラム本体
+    30 00007C50                                 
+    31 00007C50                                 entry:
+    32 00007C50 B8 0000                         		MOV		AX,0			; レジスタ初期化
+    33 00007C53 8E D0                           		MOV		SS,AX
+    34 00007C55 BC 7C00                         		MOV		SP,0x7c00
+    35 00007C58 8E D8                           		MOV		DS,AX
+    36 00007C5A                                 
+    37 00007C5A E8 0055                         		CALL	loading			; booting OSAkkie
+    38 00007C5D                                 
+    39 00007C5D                                 ; ディスクを読む
+    40 00007C5D                                 
+    41 00007C5D B8 0820                         		MOV		AX,0x0820
+    42 00007C60 8E C0                           		MOV		ES,AX
+    43 00007C62 B5 00                           		MOV		CH,0			; シリンダ0
+    44 00007C64 B6 00                           		MOV		DH,0			; ヘッド0
+    45 00007C66 B1 02                           		MOV		CL,2			; セクタ2
+    46 00007C68 BB 0023                         		MOV		BX,18*2-1		; 読み込みたい合計セクタ数
+    47 00007C6B E8 0097                         		CALL	readfast		; 高速読み込み
+    48 00007C6E 50                              			PUSH	AX
+    49 00007C6F 53                              			PUSH	BX
+    50 00007C70 E8 0046                         			CALL	loadingdot		; 画面にdotを一個増やす
+    51 00007C73 5B                              			POP		BX
+    52 00007C74 58                              			POP		AX
+    53 00007C75                                 
+    54 00007C75 BB 92DA                         		MOV		BX,4312+0x8200+2
+    55 00007C78                                 fatloop:
+    56 00007C78 83 C3 FE                        		ADD		BX,-2
+    57 00007C7B 83 3F 00                        		CMP		WORD [BX],0
+    58 00007C7E 74 F8                           		JZ		fatloop
+    59 00007C80 89 D8                           		MOV		AX,BX
+    60 00007C82 05 7E66                         		ADD		AX,-0x8200-5+54+53
+    61 00007C85 B3 36                           		MOV		BL,54
+    62 00007C87 F6 F3                           		DIV		BL				; AL = AX / BL
+    63 00007C89                                 
+    64 00007C89 3C 00                           		CMP		AL,0
+    65 00007C8B 75 02                           		JNZ		fatskip1
+    66 00007C8D B0 01                           		MOV		AL,1
+    67 00007C8F                                 fatskip1:
+    68 00007C8F 3C 21                           		CMP		AL,33
+    69 00007C91 76 02                           		JBE		fatskip2
+    70 00007C93 B0 21                           		MOV		AL,33
+    71 00007C95                                 fatskip2:
+    72 00007C95 A2 0FF0                         		MOV		[0x0ff0],AL		; IPLがどこまで読んだのかをメモ
+    73 00007C98 04 FF                           		ADD		AL,-1
+    74 00007C9A 74 13                           		JZ		fatskip3
+    75 00007C9C B4 00                           		MOV		AH,0
+    76 00007C9E 6B D8 24                        		IMUL	BX,AX,18*2
+    77 00007CA1                                 
+    78 00007CA1 B8 0C80                         		MOV		AX,0x0c80
+    79 00007CA4 8E C0                           		MOV		ES,AX
+    80 00007CA6 B5 01                           		MOV		CH,1			; シリンダ1
+    81 00007CA8 B6 00                           		MOV		DH,0			; ヘッド0
+    82 00007CAA B1 01                           		MOV		CL,1			; セクタ1
+    83 00007CAC E8 0056                         		CALL	readfast		; 高速読み込み
+    84 00007CAF                                 fatskip3:
+    85 00007CAF                                 ; 読み終わったのでosakkie.sysを実行だ！
+    86 00007CAF                                 
+    87 00007CAF E9 454E                         		JMP		0xc200
+    88 00007CB2                                 
+    89 00007CB2                                 loading:
+    90 00007CB2 BE 7CF2                         		MOV		SI,msg_loading
+    91 00007CB5 E8 0008                         		CALL	putloop
+    92 00007CB8 C3                              		RET
+    93 00007CB9                                 loadingdot:
+    94 00007CB9 BE 7D03                         		MOV		SI,msg_loadingdot
+    95 00007CBC E8 0001                         		CALL	putloop
+    96 00007CBF C3                              		RET
+    97 00007CC0                                 putloop:
+    98 00007CC0 8A 04                           		MOV		AL,[SI]
+    99 00007CC2 83 C6 01                        		ADD		SI,1			; SIに1を足す
+   100 00007CC5 3C 00                           		CMP		AL,0
+   101 00007CC7 0F 84 00BB                      		JE		return
+   102 00007CCB B4 0E                           		MOV		AH,0x0e			; 一文字表示ファンクション
+   103 00007CCD BB 000F                         		MOV		BX,15			; カラーコード
+   104 00007CD0 CD 10                           		INT		0x10			; ビデオBIOS呼び出し
+   105 00007CD2 EB EC                           		JMP		putloop
+   106 00007CD4                                 error:
+   107 00007CD4 BE 7CDD                         		MOV		SI,msg_err
+   108 00007CD7 E8 FFE6                         		CALL	putloop
+   109 00007CDA                                 fin:
+   110 00007CDA F4                              		HLT						; 何かあるまでCPUを停止させる
+   111 00007CDB EB FD                           		JMP		fin				; 無限ループ
+   112 00007CDD                                 
+   113 00007CDD                                 msg_err:
+   114 00007CDD 0A 0A                           		DB		0x0a, 0x0a		; 改行を2つ
+   115 00007CDF 4C 6F 61 64 20 65 72 72 6F 72   		DB		"Load error... orz"
+       00007CE9 2E 2E 2E 20 6F 72 7A 
+   116 00007CF0 0A                              		DB		0x0a			; 改行
+   117 00007CF1 00                              		DB		0
+   118 00007CF2                                 msg_loading:
+   119 00007CF2 42 6F 6F 74 69 6E 67 20 4F 53   		DB		"Booting OSAkkie "
+       00007CFC 41 6B 6B 69 65 20 
+   120 00007D02 00                              		DB		0
+   121 00007D03                                 msg_loadingdot:
+   122 00007D03 2E                              		DB		"."
+   123 00007D04 00                              		DB		0
+   124 00007D05                                 
+   125 00007D05                                 readfast:	; ALを使って出来るだけまとめて読み出す
+   126 00007D05                                 ;	ES:読み込み番地, CH:シリンダ, DH:ヘッド, CL:セクタ, BX:最大読み込みセクタ数
+   127 00007D05                                 
+   128 00007D05 8C C0                           		MOV		AX,ES			; < ESからALの最大値を計算 >
+   129 00007D07 C1 E0 03                        		SHL		AX,3			; AXを32で割って、その結果をAHに入れたことになる
+   130 00007D0A 80 E4 7F                        		AND		AH,0x7f			; AHはAHを128で割った余り（512*128=64K）
+   131 00007D0D B0 80                           		MOV		AL,128			; AL = 128 - AH; 一番近い64KB境界まで最大何セクタ入るか
+   132 00007D0F 28 E0                           		SUB		AL,AH
+   133 00007D11                                 
+   134 00007D11 88 DC                           		MOV		AH,BL			; < BXからALの最大値をAHに計算 >
+   135 00007D13 80 FF 00                        		CMP		BH,0			; if (BH != 0) { AH = 18; }
+   136 00007D16 74 02                           		JE		.skip1
+   137 00007D18 B4 12                           		MOV		AH,18
+   138 00007D1A                                 .skip1:
+   139 00007D1A 38 E0                           		CMP		AL,AH			; if (AL > AH) { AL = AH; }
+   140 00007D1C 76 02                           		JBE		.skip2
+   141 00007D1E 88 E0                           		MOV		AL,AH
+   142 00007D20                                 .skip2:
+   143 00007D20                                 
+   144 00007D20 B4 13                           		MOV		AH,19			; < CLからALの最大値をAHに計算 >
+   145 00007D22 28 CC                           		SUB		AH,CL			; AH = 19 - CL;
+   146 00007D24 38 E0                           		CMP		AL,AH			; if (AL > AH) { AL = AH; }
+   147 00007D26 76 02                           		JBE		.skip3
+   148 00007D28 88 E0                           		MOV		AL,AH
+   149 00007D2A                                 .skip3:
+   150 00007D2A                                 
+   151 00007D2A 53                              		PUSH	BX
+   152 00007D2B BE 0000                         		MOV		SI,0			; 失敗回数を数えるレジスタ
+   153 00007D2E                                 retry:
+   154 00007D2E B4 02                           		MOV		AH,0x02			; AH=0x02 : ディスク読み込み
+   155 00007D30 BB 0000                         		MOV		BX,0
+   156 00007D33 B2 00                           		MOV		DL,0x00			; Aドライブ
+   157 00007D35 06                              		PUSH	ES
+   158 00007D36 52                              		PUSH	DX
+   159 00007D37 51                              		PUSH	CX
+   160 00007D38 50                              		PUSH	AX
+   161 00007D39 CD 13                           		INT		0x13			; ディスクBIOS呼び出し
+   162 00007D3B 73 14                           		JNC		next			; エラーがおきなればnextへ
+   163 00007D3D 83 C6 01                        		ADD		SI,1			; SIに1を足す
+   164 00007D40 83 FE 05                        		CMP		SI,5			; SIと5を比較
+   165 00007D43 73 8F                           		JAE		error			; SI >= 5 だったらerrorへ
+   166 00007D45 B4 00                           		MOV		AH,0x00
+   167 00007D47 B2 00                           		MOV		DL,0x00			; Aドライブ
+   168 00007D49 CD 13                           		INT		0x13			; ドライブのリセット
+   169 00007D4B 58                              		POP		AX
+   170 00007D4C 59                              		POP		CX
+   171 00007D4D 5A                              		POP		DX
+   172 00007D4E 07                              		POP		ES
+   173 00007D4F EB DD                           		JMP		retry
+   174 00007D51                                 next:
+   175 00007D51 58                              		POP		AX
+   176 00007D52 59                              		POP		CX
+   177 00007D53 5A                              		POP		DX
+   178 00007D54 5B                              		POP		BX				; ESの内容をBXで受け取る
+   179 00007D55 C1 EB 05                        		SHR		BX,5			; BXを16バイト単位から512バイト単位へ
+   180 00007D58 B4 00                           		MOV		AH,0
+   181 00007D5A 01 C3                           		ADD		BX,AX			; BX += AL;
+   182 00007D5C C1 E3 05                        		SHL		BX,5			; BXを512バイト単位から16バイト単位へ
+   183 00007D5F 8E C3                           		MOV		ES,BX			; これで ES += AL * 0x20; になる
+   184 00007D61 5B                              		POP		BX
+   185 00007D62 29 C3                           		SUB		BX,AX
+   186 00007D64 74 20                           		JZ		return
+   187 00007D66 00 C1                           		ADD		CL,AL			; CLにALを足す
+   188 00007D68 80 F9 12                        		CMP		CL,18			; CLと18を比較
+   189 00007D6B 76 98                           		JBE		readfast		; CL <= 18 だったらreadloopへ
+   190 00007D6D B1 01                           		MOV		CL,1
+   191 00007D6F 80 C6 01                        		ADD		DH,1
+   192 00007D72 80 FE 02                        		CMP		DH,2
+   193 00007D75 72 8E                           		JB		readfast		; DH < 2 だったらreadloopへ
+   194 00007D77 50                              			PUSH	AX
+   195 00007D78 53                              			PUSH	BX
+   196 00007D79 E8 FF3D                         			CALL	loadingdot		; 画面にdotを一個増やす
+   197 00007D7C 5B                              			POP		BX
+   198 00007D7D 58                              			POP		AX
+   199 00007D7E B6 00                           		MOV		DH,0
+   200 00007D80 80 C5 01                        		ADD		CH,1
+   201 00007D83 E9 FF7F                         		JMP		readfast
+   202 00007D86                                 
+   203 00007D86                                 return:
+   204 00007D86 C3                              		RET
+   205 00007D87                                 
+   206 00007D87 00 00 00 00 00 00 00 00 00 00   		RESB	0x7dfe-$		; 0x7dfeまでを0x00で埋める命令
+       00007D91 00 00 00 00 00 00 00 00 00 00 
+       00007D9B 00 00 00 00 00 00 00 00 00 00 
+       00007DA5 00 00 00 00 00 00 00 00 00 00 
+       00007DAF 00 00 00 00 00 00 00 00 00 00 
+       00007DB9 00 00 00 00 00 00 00 00 00 00 
+       00007DC3 00 00 00 00 00 00 00 00 00 00 
+       00007DCD 00 00 00 00 00 00 00 00 00 00 
+       00007DD7 00 00 00 00 00 00 00 00 00 00 
+       00007DE1 00 00 00 00 00 00 00 00 00 00 
+       00007DEB 00 00 00 00 00 00 00 00 00 00 
+       00007DF5 00 00 00 00 00 00 00 00 00 
+   207 00007DFE                                 
+   208 00007DFE 55 AA                           		DB		0x55, 0xaa

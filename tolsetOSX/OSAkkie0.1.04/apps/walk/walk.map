@@ -1,0 +1,48 @@
+text size :    470(0x001D6)
+data size :      5(0x00005)
+bss  size :      0(0x00000)
+
+0x00000024 : (.text)
+0x00000024 : _HariMain
+0x00000140 : _api_end
+0x00000140 : (.text)
+0x00000147 : _api_openwin
+0x00000147 : (.text)
+0x00000169 : _api_putstrwin
+0x00000169 : (.text)
+0x00000191 : _api_boxfilwin
+0x00000191 : (.text)
+0x000001B9 : _api_closewin
+0x000001B9 : (.text)
+0x000001C7 : _api_getkey
+0x000001C7 : (.text)
+0x000001D3 : _tomo_setlang
+0x000001D3 : (.text)
+0x000001E1 : _osak_getbuflen
+0x000001E1 : (.text)
+0x000001E9 : __alloca
+0x000001E9 : (.text)
+0x000001F1 : (.text)
+0x000001F1 : _HariStartup
+0x00000000 : (.data)
+0x00000000 : (.data)
+0x00000000 : (.data)
+0x00000000 : (.data)
+0x00000000 : (.data)
+0x00000000 : (.data)
+0x00000000 : (.data)
+0x00000000 : (.data)
+0x00000000 : (.data)
+0x00000000 : (.data)
+0x00011000 : (.data)
+0x00000000 : (.bss)
+0x00000000 : (.bss)
+0x00000000 : (.bss)
+0x00000000 : (.bss)
+0x00000000 : (.bss)
+0x00000000 : (.bss)
+0x00000000 : (.bss)
+0x00000000 : (.bss)
+0x00000000 : (.bss)
+0x00000000 : (.bss)
+0x00000000 : (.bss)

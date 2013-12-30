@@ -1,0 +1,40 @@
+text size :    355(0x00163)
+data size :    134(0x00086)
+bss  size :      0(0x00000)
+
+0x00000024 : (.text)
+0x00000024 : _HariMain
+0x000000E9 : _api_end
+0x000000E9 : (.text)
+0x000000F0 : _api_openwin
+0x000000F0 : (.text)
+0x00000112 : _api_boxfilwin
+0x00000112 : (.text)
+0x0000013A : _api_linewin
+0x0000013A : (.text)
+0x00000162 : _api_getkey
+0x00000162 : (.text)
+0x0000016E : _osak_getbuflen
+0x0000016E : (.text)
+0x00000176 : __alloca
+0x00000176 : (.text)
+0x0000017E : (.text)
+0x0000017E : _HariStartup
+0x00000000 : (.data)
+0x00000000 : (.data)
+0x00000000 : (.data)
+0x00000000 : (.data)
+0x00000000 : (.data)
+0x00000000 : (.data)
+0x00000000 : (.data)
+0x00000000 : (.data)
+0x00034000 : (.data)
+0x00000000 : (.bss)
+0x00000000 : (.bss)
+0x00000000 : (.bss)
+0x00000000 : (.bss)
+0x00000000 : (.bss)
+0x00000000 : (.bss)
+0x00000000 : (.bss)
+0x00000000 : (.bss)
+0x00000000 : (.bss)

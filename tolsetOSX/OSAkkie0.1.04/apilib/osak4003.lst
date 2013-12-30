@@ -1,0 +1,16 @@
+     1 00000000                                 [FORMAT "WCOFF"]
+     2 00000000                                 [INSTRSET "i486p"]
+     3 00000000                                 [BITS 32]
+     4 00000000                                 [FILE "osak4003.nas"]
+     5 00000000                                 
+     6 00000000                                 		GLOBAL	_osak_exec
+     7 00000000                                 
+     8                                          [SECTION .text]
+     9 00000000                                 
+    10 00000000                                 _osak_exec:		; void osak_exec(char *name);
+    11 00000000 55                              		PUSH	EBP
+    12 00000001 BA 00004003                     		MOV		EDX,0x4003
+    13 00000006 8B 6C 24 08                     		MOV		EBP,[ESP+8]		; name
+    14 0000000A CD 40                           		INT		0x40
+    15 0000000C 5D                              		POP		EBP
+    16 0000000D C3                              		RET

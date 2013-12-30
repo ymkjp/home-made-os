@@ -1,46 +1,51 @@
 ; hello-os
-; TAB=4
-
-; フロッピーディスク向けの記述
-    DB      0xeb, 0x4e, 0x90
-    DB      "HELLOIPL"
-    DW      512
-    DB      1
-    DW      1
-    DB      2
-    DW      224
-    DW      2880
-    DB      0xf0
-    DW      9
-    DW      18
-    DW      2
-    DD      0
-    DD      2880
-    DB      0,0,0x29
-    DD      0xffffffff
-    DB      "HELLO-OS"
-    DB      "FAT12"
-    RESB    18
-
-; プログラム本体
-    DB      0xb8, 0x00, 0x00, 0x8e, 0xd0, 0xbc, 0x00, 0x7c
-    DB      0x8e, 0xd8, 0x8e, 0xc0, 0xbe, 0x74, 0x7c, 0x8a
-    DB      0x04, 0x83, 0xc6, 0x01, 0x3c, 0x00, 0x74, 0x09
-    DB      0xb4, 0x0e, 0xbb, 0x0f, 0x00, 0xcd, 0x10, 0xeb
-    DB      0xee, 0xf4, 0xeb, 0xfd
-
-; メッセージ部分
-    DB      0x0a, 0x0a  ; 改行を2つ
-    DB      "hello, world"
-    DB      0x0a
-    DB      0
-
-    RESB    0x1fe-$     ; 0x001fe までを 0x00 で埋める命令
-
-    DB      0x55, 0xaa
-
-; 以下はブートセクタ以外の部分の記述
-    DB      0xf0, 0xff, 0xff, 0x00, 0x00, 0x00, 0x00, 0x00
-    RESB    4600
-    DB      0xf0, 0xff, 0xff, 0x00, 0x00, 0x00, 0x00, 0x00
-    RESB    1469432
+ 
+        ORG     0x7c00
+ 
+        JMP SHORT entry
+        DB      0x90
+        DB      "HELLOIPL"      ; Boot sector name (8 bytes)
+        DW      512             ; Size of sector (Must be 512)
+        DB      1               ; Size of cluster (Must be 1)
+        DW      1               ; FAT start
+        DB      2               ; FAT count
+        DW      224             ; Size of root dir
+        DW      2880            ; Size of this media (Must be 2880)
+        DB      0xf0            ; Media type (Must be 0xf0)
+        DW      9               ; FAT length
+        DW      18              ; Number of sector in a track
+        DW      2               ; Number of head
+        DD      0               ; No partition
+        DD      2880            ; Drive size
+        DB      0,0,0x29        ; Magic
+        DD      0xffffffff      ; Volume serial number
+        DB      "HELLO-OS   "   ; Disk name (11 bytes)
+        DB      "FAT12   "      ; Format name (8 bytes)
+        TIMES 18 DB 0
+ 
+entry:
+        MOV     AX,0
+        MOV     SS, AX
+        MOV     SP, 0x7c00
+        MOV     DS, AX
+        MOV     ES, AX
+        MOV     AL, [SI]
+        ADD     SI, 1
+        CMP     AL, 0
+        JE SHORT fin
+        MOV     AH, 0x0e        ; Function: put 1 char
+        MOV     BX, 15          ; Color code
+        INT     0x10
+        JMP SHORT putloop
+fin:
+        HLT
+        JMP SHORT fin
+ 
+msg:
+        DB      0x0a, 0x0a
+        DB      "hello, world"
+        DB      0x0a
+        DB      0
+ 
+        TIMES 0x01fe-($-$$) DB 0   ; Fill 0x00 until 510 byte
+        DB      0x55, 0xaa      ; Marker

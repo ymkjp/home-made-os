@@ -1,0 +1,966 @@
+     1 00000000                                 [FORMAT "WCOFF"]
+     2 00000000                                 [INSTRSET "i486p"]
+     3 00000000                                 [OPTIMIZE 1]
+     4 00000000                                 [OPTION 1]
+     5 00000000                                 [BITS 32]
+     6 00000000                                 	EXTERN	_osak_getbuflen
+     7 00000000                                 	EXTERN	__alloca
+     8 00000000                                 	EXTERN	_tomo_setlang
+     9 00000000                                 	EXTERN	_api_openwin
+    10 00000000                                 	EXTERN	_api_boxfilwin
+    11 00000000                                 	EXTERN	_api_alloctimer
+    12 00000000                                 	EXTERN	_api_inittimer
+    13 00000000                                 	EXTERN	_title.0
+    14 00000000                                 	EXTERN	_osak_putministrwin
+    15 00000000                                 	EXTERN	_api_getkey
+    16 00000000                                 	EXTERN	_list
+    17 00000000                                 	EXTERN	_osak_exec
+    18 00000000                                 	EXTERN	_osak_linewin
+    19 00000000                                 	EXTERN	_api_settimer
+    20 00000000                                 [FILE "menu.c"]
+    21                                          [SECTION .data]
+    22 00000000                                 _list:
+    23 00000000 31 6C 69 6E 65 20 20 20 00      	DB	"1line   ",0x00
+    24 00000009 00 00 00                        	RESB	3
+    25 0000000C 00000000                        	DD	0
+    26 00000010 00                              	DB	0x00
+    27 00000011 00 00 00 00 00 00 00 00 00 00   	RESB	21
+       0000001B 00 00 00 00 00 00 00 00 00 00 
+       00000025 00 
+    28 00000026 4F 53 BC DE BB B8 C6 AD B3 D3   	DB	"OS",0xBC,0xDE,0xBB,0xB8,0xC6,0xAD,0xB3,0xD3,0xDD," 25",0xC6,0xC1,0xD2," ",0xCF,0xC3,0xDE," task_a ",0x00
+       00000030 DD 20 32 35 C6 C1 D2 20 CF C3 
+       0000003A DE 20 74 61 73 6B 5F 61 20 00 
+    29 00000044 C4 BC C3 20 B1 AF C0 20 B3 A8   	DB	0xC4,0xBC,0xC3," ",0xB1,0xAF,0xC0," ",0xB3,0xA8,0xDD,0xC4,0xDE,0xB3," ",0xA6," ",0xB1,0xCC,0xDF,0xD8,0xB9,0xB0,0xBC,0xAE,0xDD," ",0xC3,0xDE,0x00
+       0000004E DD C4 DE B3 20 A6 20 B1 CC DF 
+       00000058 D8 B9 B0 BC AE DD 20 C3 DE 00 
+    30 00000062 BB B2 B9 DE DD 20 BC CF BC C0   	DB	0xBB,0xB2,0xB9,0xDE,0xDD," ",0xBC,0xCF,0xBC,0xC0,0xA1,"                  ",0x00
+       0000006C A1 20 20 20 20 20 20 20 20 20 
+       00000076 20 20 20 20 20 20 20 20 20 00 
+    31 00000080 00                              	DB	0x00
+    32 00000081 00 00 00 00 00 00 00 00 00 00   	RESB	29
+       0000008B 00 00 00 00 00 00 00 00 00 00 
+       00000095 00 00 00 00 00 00 00 00 00 
+    33 0000009E 00                              	DB	0x00
+    34 0000009F 00 00 00 00 00 00 00 00 00 00   	RESB	29
+       000000A9 00 00 00 00 00 00 00 00 00 00 
+       000000B3 00 00 00 00 00 00 00 00 00 
+    35 000000BC 62 62 61 6C 6C 20 20 20 00      	DB	"bball   ",0x00
+    36 000000C5 00 00 00                        	RESB	3
+    37 000000C8 00000000                        	DD	0
+    38 000000CC 00                              	DB	0x00
+    39 000000CD 00 00 00 00 00 00 00 00 00 00   	RESB	21
+       000000D7 00 00 00 00 00 00 00 00 00 00 
+       000000E1 00 
+    40 000000E2 4F 53 BC DE BB B8 C6 AD B3 D3   	DB	"OS",0xBC,0xDE,0xBB,0xB8,0xC6,0xAD,0xB3,0xD3,0xDD," 29",0xC6,0xC1,0xD2,0xD6,0xD8," bball",0xC3,0xDE,0xBD,0xA1,0x00
+       000000EC DD 20 32 39 C6 C1 D2 D6 D8 20 
+       000000F6 62 62 61 6C 6C C3 DE BD A1 00 
+    41 00000100 BE DD 20 31 CE DF DD 20 31 CE   	DB	0xBE,0xDD," 1",0xCE,0xDF,0xDD," 1",0xCE,0xDF,0xDD," ",0xC9," ",0xB4,0xDA,0xB6,0xDE,0xDD,0xC4,0xC5," ",0xB6,0xB6,0xDE,0xD4,0xB7,0xA6,0x00
+       0000010A DF DD 20 C9 20 B4 DA B6 DE DD 
+       00000114 C4 C5 20 B6 B6 DE D4 B7 A6 00 
+    42 0000011E B5 C0 C9 BC D0 20 B8 C0 DE BB   	DB	0xB5,0xC0,0xC9,0xBC,0xD0," ",0xB8,0xC0,0xDE,0xBB,0xB2,0xA1,"                 ",0x00
+       00000128 B2 A1 20 20 20 20 20 20 20 20 
+       00000132 20 20 20 20 20 20 20 20 20 00 
+    43 0000013C 00                              	DB	0x00
+    44 0000013D 00 00 00 00 00 00 00 00 00 00   	RESB	29
+       00000147 00 00 00 00 00 00 00 00 00 00 
+       00000151 00 00 00 00 00 00 00 00 00 
+    45 0000015A 00                              	DB	0x00
+    46 0000015B 00 00 00 00 00 00 00 00 00 00   	RESB	29
+       00000165 00 00 00 00 00 00 00 00 00 00 
+       0000016F 00 00 00 00 00 00 00 00 00 
+    47 00000178 62 6F 6E 6E 6F 20 20 20 00      	DB	"bonno   ",0x00
+    48 00000181 00 00 00                        	RESB	3
+    49 00000184 00000000                        	DD	0
+    50 00000188 00                              	DB	0x00
+    51 00000189 00 00 00 00 00 00 00 00 00 00   	RESB	21
+       00000193 00 00 00 00 00 00 00 00 00 00 
+       0000019D 00 
+    52 0000019E CE DE DD C9 B0 20 B3 C1 CA D7   	DB	0xCE,0xDE,0xDD,0xC9,0xB0," ",0xB3,0xC1,0xCA,0xD7,0xB2," ",0xBC,0xB4,0xDD," ",0xB1,0xCC,0xDF,0xD8," ",0xC3,0xDE,0xBD,0xA1,"    ",0x00
+       000001A8 B2 20 BC B4 DD 20 B1 CC DF D8 
+       000001B2 20 C3 DE BD A1 20 20 20 20 00 
+    53 000001BC BD CD DF B0 BD B7 B0 20 A6 20   	DB	0xBD,0xCD,0xDF,0xB0,0xBD,0xB7,0xB0," ",0xA6," ",0xB5,0xBC,0xC3," ",0xCE,0xDE,0xDD,0xC9,0xB0," ",0xA6," ",0xB3,0xC1,0xCA,0xD7,0xB5,0xB3,"!",0x00
+       000001C6 B5 BC C3 20 CE DE DD C9 B0 20 
+       000001D0 A6 20 B3 C1 CA D7 B5 B3 21 00 
+    54 000001DA 00                              	DB	0x00
+    55 000001DB 00 00 00 00 00 00 00 00 00 00   	RESB	29
+       000001E5 00 00 00 00 00 00 00 00 00 00 
+       000001EF 00 00 00 00 00 00 00 00 00 
+    56 000001F8 00                              	DB	0x00
+    57 000001F9 00 00 00 00 00 00 00 00 00 00   	RESB	29
+       00000203 00 00 00 00 00 00 00 00 00 00 
+       0000020D 00 00 00 00 00 00 00 00 00 
+    58 00000216 00                              	DB	0x00
+    59 00000217 00 00 00 00 00 00 00 00 00 00   	RESB	29
+       00000221 00 00 00 00 00 00 00 00 00 00 
+       0000022B 00 00 00 00 00 00 00 00 00 
+    60 00000234 63 6C 6F 63 6B 20 20 20 00      	DB	"clock   ",0x00
+    61 0000023D 00 00 00                        	RESB	3
+    62 00000240 00000000                        	DD	0
+    63 00000244 00                              	DB	0x00
+    64 00000245 00 00 00 00 00 00 00 00 00 00   	RESB	21
+       0000024F 00 00 00 00 00 00 00 00 00 00 
+       00000259 00 
+    65 0000025A B9 DE DD BB DE B2 20 C9 20 BC   	DB	0xB9,0xDE,0xDD,0xBB,0xDE,0xB2," ",0xC9," ",0xBC,0xDE,0xBA,0xB8," ",0xA6," ",0xCB,0xAE,0xB3,0xBC,0xDE," ",0xBC,0xCF,0xBD,0xA1,"   ",0x00
+       00000264 DE BA B8 20 A6 20 CB AE B3 BC 
+       0000026E DE 20 BC CF BD A1 20 20 20 00 
+    66 00000278 A5 A5 A5 B4 3F 20 BD DE DA C3   	DB	0xA5,0xA5,0xA5,0xB4,"? ",0xBD,0xDE,0xDA,0xC3," ",0xB2,0xCF,0xBD,0xB6,"? ",0xBF,0xDA,0xCA," ",0xB1,0xC5,0xC0," ",0xC9," PC",0x00
+       00000282 20 B2 CF BD B6 3F 20 BF DA CA 
+       0000028C 20 B1 C5 C0 20 C9 20 50 43 00 
+    67 00000296 C9 20 C4 B9 B2 20 B6 DE 20 BD   	DB	0xC9," ",0xC4,0xB9,0xB2," ",0xB6,0xDE," ",0xBD,0xDE,0xDA,0xC3," ",0xB2,0xD9,0xC9,0xC3,0xDE,0xBD,"!!!      ",0x00
+       000002A0 DE DA C3 20 B2 D9 C9 C3 DE BD 
+       000002AA 21 21 21 20 20 20 20 20 20 00 
+    68 000002B4 00                              	DB	0x00
+    69 000002B5 00 00 00 00 00 00 00 00 00 00   	RESB	29
+       000002BF 00 00 00 00 00 00 00 00 00 00 
+       000002C9 00 00 00 00 00 00 00 00 00 
+    70 000002D2 00                              	DB	0x00
+    71 000002D3 00 00 00 00 00 00 00 00 00 00   	RESB	29
+       000002DD 00 00 00 00 00 00 00 00 00 00 
+       000002E7 00 00 00 00 00 00 00 00 00 
+    72 000002F0 63 6F 6C 6F 72 20 20 20 00      	DB	"color   ",0x00
+    73 000002F9 00 00 00                        	RESB	3
+    74 000002FC 00000000                        	DD	0
+    75 00000300 00                              	DB	0x00
+    76 00000301 00 00 00 00 00 00 00 00 00 00   	RESB	21
+       0000030B 00 00 00 00 00 00 00 00 00 00 
+       00000315 00 
+    77 00000316 4F 53 BC DE BB B8 C6 AD B3 D3   	DB	"OS",0xBC,0xDE,0xBB,0xB8,0xC6,0xAD,0xB3,0xD3,0xDD," 25",0xC6,0xC1,0xD2,0xD6,0xD8," color",0xC3,0xDE,0xBD,0xA1,0x00
+       00000320 DD 20 32 35 C6 C1 D2 D6 D8 20 
+       0000032A 63 6F 6C 6F 72 C3 DE BD A1 00 
+    78 00000334 CE DD C3 DE CA 20 B1 B6 B9 B2   	DB	0xCE,0xDD,0xC3,0xDE,0xCA," ",0xB1,0xB6,0xB9,0xB2," ",0xC9," ",0xB2,0xDB," ",0xC3,0xDE,0xBC,0xC0,0xB6,0xDE,0xA4," ",0xB1,0xAF,0xB7,0xA8,0xC9,0x00
+       0000033E 20 C9 20 B2 DB 20 C3 DE BC C0 
+       00000348 B6 DE A4 20 B1 AF B7 A8 C9 00 
+    79 00000352 BC AD D0 C6 D6 D8 A4 20 B1 B5   	DB	0xBC,0xAD,0xD0,0xC6,0xD6,0xD8,0xA4," ",0xB1,0xB5,0xB9,0xB2,0xC6," ",0xCD,0xDD,0xBA,0xB3," ",0xBB,0xDA,0xC3," ",0xB2,0xCF,0xBD,0xA1,"  ",0x00
+       0000035C B9 B2 C6 20 CD DD BA B3 20 BB 
+       00000366 DA C3 20 B2 CF BD A1 20 20 00 
+    80 00000370 00                              	DB	0x00
+    81 00000371 00 00 00 00 00 00 00 00 00 00   	RESB	29
+       0000037B 00 00 00 00 00 00 00 00 00 00 
+       00000385 00 00 00 00 00 00 00 00 00 
+    82 0000038E 00                              	DB	0x00
+    83 0000038F 00 00 00 00 00 00 00 00 00 00   	RESB	29
+       00000399 00 00 00 00 00 00 00 00 00 00 
+       000003A3 00 00 00 00 00 00 00 00 00 
+    84 000003AC 63 73 76 76 20 20 20 20 00      	DB	"csvv    ",0x00
+    85 000003B5 00 00 00                        	RESB	3
+    86 000003B8 00000001                        	DD	1
+    87 000003BC 63 73 76 76 20 73 61 6D 70 6C   	DB	"csvv sample.csv",0x00
+       000003C6 65 2E 63 73 76 00 
+    88 000003CC 00 00 00 00 00 00               	RESB	6
+    89 000003D2 B6 DD B2 20 43 53 56 20 CB DE   	DB	0xB6,0xDD,0xB2," CSV ",0xCB,0xDE,0xAD,0xB0,0xB1," ",0xC3,0xDE,0xBD,0xA1," ",0xB6,0xB0,0xBF,0xD9," ",0xB7,0xB0," ",0xD4,0xA4,0x00
+       000003DC AD B0 B1 20 C3 DE BD A1 20 B6 
+       000003E6 B0 BF D9 20 B7 B0 20 D4 A4 00 
+    90 000003F0 50 61 67 65 55 70 2C 44 6F 77   	DB	"PageUp,Down ",0xB7,0xB0," ",0xC3,0xDE,0xBF,0xB3,0xBB," ",0xC3,0xDE,0xB7,0xCF,0xBD,0xA1,"  ",0x00
+       000003FA 6E 20 B7 B0 20 C3 DE BF B3 BB 
+       00000404 20 C3 DE B7 CF BD A1 20 20 00 
+    91 0000040E BA C9 20 D2 C6 AD B0 20 B6 D7   	DB	0xBA,0xC9," ",0xD2,0xC6,0xAD,0xB0," ",0xB6,0xD7," ",0xCA," ",0xBB,0xDD,0xCC,0xDF,0xD9," ",0xA6," ",0xCB,0xD7,0xB7,0xCF,0xBD,0xA1," ",0x00
+       00000418 20 CA 20 BB DD CC DF D9 20 A6 
+       00000422 20 CB D7 B7 CF BD A1 20 00 
+    92 0000042B 00                              	RESB	1
+    93 0000042C CC DF DB DD CC DF C4 20 B6 D7   	DB	0xCC,0xDF,0xDB,0xDD,0xCC,0xDF,0xC4," ",0xB6,0xD7," ",0xA2,"csvv ",0xCC,0xA7,0xB2,0xD9,0xD2,0xB2,0xA3," ",0xC9,0xD6,0xB3,0xC6,0x00
+       00000436 20 A2 63 73 76 76 20 CC A7 B2 
+       00000440 D9 D2 B2 A3 20 C9 D6 B3 C6 00 
+    94 0000044A C6 AD B3 D8 AE B8 20 BC C3 D3   	DB	0xC6,0xAD,0xB3,0xD8,0xAE,0xB8," ",0xBC,0xC3,0xD3," ",0xCB,0xD7,0xB9,0xCF,0xBD,0xA1,"            ",0x00
+       00000454 20 CB D7 B9 CF BD A1 20 20 20 
+       0000045E 20 20 20 20 20 20 20 20 20 00 
+    95 00000468 63 76 74 67 20 20 20 20 00      	DB	"cvtg    ",0x00
+    96 00000471 00 00 00                        	RESB	3
+    97 00000474 00000000                        	DD	0
+    98 00000478 00                              	DB	0x00
+    99 00000479 00 00 00 00 00 00 00 00 00 00   	RESB	21
+       00000483 00 00 00 00 00 00 00 00 00 00 
+       0000048D 00 
+   100 0000048E BC AD B3 CD DD BC D4 20 C4 B2   	DB	0xBC,0xAD,0xB3,0xCD,0xDD,0xBC,0xD4," ",0xC4,0xB2,0xB3,0xD3,0xC9," ",0xA6," ",0xB7,0xC0,0xB4,0xD9," ",0xBA,0xC4,0xB6,0xDE,"    ",0x00
+       00000498 B3 D3 C9 20 A6 20 B7 C0 B4 D9 
+       000004A2 20 BA C4 B6 DE 20 20 20 20 00 
+   101 000004AC C3 DE B7 D9 20 B1 CC DF D8 20   	DB	0xC3,0xDE,0xB7,0xD9," ",0xB1,0xCC,0xDF,0xD8," ",0xC3,0xDE,0xBD,0xA1," ",0xB6,0xDE,0xD2,0xDD," ",0xC6," ",0xC3,0xDE,0xC3,0xB8,0xD9,"  ",0x00
+       000004B6 C3 DE BD A1 20 B6 DE D2 DD 20 
+       000004C0 C6 20 C3 DE C3 B8 D9 20 20 00 
+   102 000004CA CF D9 20 BC B6 B8 20 C9 20 B7   	DB	0xCF,0xD9," ",0xBC,0xB6,0xB8," ",0xC9," ",0xB7,0xBA,0xDE,0xB3," ",0xC4," ",0xBD,0xB3,0xBC,0xDE," ",0xA6," ",0xBE,0xB2,0xB9,0xDE,0xDD," ",0x00
+       000004D4 BA DE B3 20 C4 20 BD B3 BC DE 
+       000004DE 20 A6 20 BE B2 B9 DE DD 20 00 
+   103 000004E8 BC DE B6 DD 20 C9 20 B3 C1 C6   	DB	0xBC,0xDE,0xB6,0xDD," ",0xC9," ",0xB3,0xC1,0xC6," ",0xB5,0xCE,0xDE,0xB4,0xC3," ",0xB8,0xC0,0xDE,0xBB,0xB2,0xA1,"      ",0x00
+       000004F2 20 B5 CE DE B4 C3 20 B8 C0 DE 
+       000004FC BB B2 A1 20 20 20 20 20 20 00 
+   104 00000506 00                              	DB	0x00
+   105 00000507 00 00 00 00 00 00 00 00 00 00   	RESB	29
+       00000511 00 00 00 00 00 00 00 00 00 00 
+       0000051B 00 00 00 00 00 00 00 00 00 
+   106 00000524 67 76 69 65 77 20 20 20 00      	DB	"gview   ",0x00
+   107 0000052D 00 00 00                        	RESB	3
+   108 00000530 00000001                        	DD	1
+   109 00000534 67 76 69 65 77 20 66 75 6B 75   	DB	"gview fukurou.jpg",0x00
+       0000053E 72 6F 75 2E 6A 70 67 00 
+   110 00000546 00 00 00 00                     	RESB	4
+   111 0000054A 4F 53 BC DE BB B8 C6 AD B3 D3   	DB	"OS",0xBC,0xDE,0xBB,0xB8,0xC6,0xAD,0xB3,0xD3,0xDD," 30",0xC6,0xC1,0xD2,0xD6,0xD8," ",0xB6,0xDE,0xBF,0xDE,0xB3,"    ",0x00
+       00000554 DD 20 33 30 C6 C1 D2 D6 D8 20 
+       0000055E B6 DE BF DE B3 20 20 20 20 00 
+   112 00000568 CB DE AD B0 B1 C3 DE BD A1 20   	DB	0xCB,0xDE,0xAD,0xB0,0xB1,0xC3,0xDE,0xBD,0xA1," bmp, jpeg, ico ",0xCC,0xA7,0xB2,0xD9,0x00
+       00000572 62 6D 70 2C 20 6A 70 65 67 2C 
+       0000057C 20 69 63 6F 20 CC A7 B2 D9 00 
+   113 00000586 A6 20 CB D7 B8 BA C4 B6 DE 20   	DB	0xA6," ",0xCB,0xD7,0xB8,0xBA,0xC4,0xB6,0xDE," ",0xC3,0xDE,0xB7,0xCF,0xBD,0xA1,"  ",0xCC,0xDF,0xDB,0xDD,0xCC,0xDF,0xC4," ",0xB6,0xD7," ",0x00
+       00000590 C3 DE B7 CF BD A1 20 20 CC DF 
+       0000059A DB DD CC DF C4 20 B6 D7 20 00 
+   114 000005A4 A2 67 76 69 65 77 20 CC A7 B2   	DB	0xA2,"gview ",0xCC,0xA7,0xB2,0xD9,0xD2,0xB2,0xA3," ",0xC4," ",0xC6,0xAD,0xB3,0xD8,0xAE,0xB8," ",0xBC,0xC3,0xD3,"  ",0x00
+       000005AE D9 D2 B2 A3 20 C4 20 C6 AD B3 
+       000005B8 D8 AE B8 20 BC C3 D3 20 20 00 
+   115 000005C2 CB D7 B9 CF BD A1 00            	DB	0xCB,0xD7,0xB9,0xCF,0xBD,0xA1,0x00
+   116 000005C9 00 00 00 00 00 00 00 00 00 00   	RESB	23
+       000005D3 00 00 00 00 00 00 00 00 00 00 
+       000005DD 00 00 00 
+   117 000005E0 69 6E 76 61 64 65 72 20 00      	DB	"invader ",0x00
+   118 000005E9 00 00 00                        	RESB	3
+   119 000005EC 00000000                        	DD	0
+   120 000005F0 00                              	DB	0x00
+   121 000005F1 00 00 00 00 00 00 00 00 00 00   	RESB	21
+       000005FB 00 00 00 00 00 00 00 00 00 00 
+       00000605 00 
+   122 00000606 4F 53 BC DE BB B8 C6 AD B3 D3   	DB	"OS",0xBC,0xDE,0xBB,0xB8,0xC6,0xAD,0xB3,0xD3,0xDD," 30",0xC6,0xC1,0xD2,0xD6,0xD8," ",0xB2,0xDD,0xCD,0xDE,0xB0,0xC0,0xDE,0xB0," ",0x00
+       00000610 DD 20 33 30 C6 C1 D2 D6 D8 20 
+       0000061A B2 DD CD DE B0 C0 DE B0 20 00 
+   123 00000624 B9 DE B0 D1 20 C3 DE BD A1 20   	DB	0xB9,0xDE,0xB0,0xD1," ",0xC3,0xDE,0xBD,0xA1," ",0xBC,0xDD,0xD8,0xAC,0xB8," ",0xBC,0xC3,0xB8,0xD9," ",0xB3,0xC1,0xAD,0xB3,0xBC,0xDE,0xDD," ",0x00
+       0000062E BC DD D8 AC B8 20 BC C3 B8 D9 
+       00000638 20 B3 C1 AD B3 BC DE DD 20 00 
+   124 00000642 B6 D7 20 C1 B7 AD B3 20 A6 20   	DB	0xB6,0xD7," ",0xC1,0xB7,0xAD,0xB3," ",0xA6," ",0xCF,0xD3,0xDB,0xB3,"!              ",0x00
+       0000064C CF D3 DB B3 21 20 20 20 20 20 
+       00000656 20 20 20 20 20 20 20 20 20 00 
+   125 00000660 00                              	DB	0x00
+   126 00000661 00 00 00 00 00 00 00 00 00 00   	RESB	29
+       0000066B 00 00 00 00 00 00 00 00 00 00 
+       00000675 00 00 00 00 00 00 00 00 00 
+   127 0000067E 00                              	DB	0x00
+   128 0000067F 00 00 00 00 00 00 00 00 00 00   	RESB	29
+       00000689 00 00 00 00 00 00 00 00 00 00 
+       00000693 00 00 00 00 00 00 00 00 00 
+   129 0000069C 6B 65 79 76 69 65 77 20 00      	DB	"keyview ",0x00
+   130 000006A5 00 00 00                        	RESB	3
+   131 000006A8 00000000                        	DD	0
+   132 000006AC 00                              	DB	0x00
+   133 000006AD 00 00 00 00 00 00 00 00 00 00   	RESB	21
+       000006B7 00 00 00 00 00 00 00 00 00 00 
+       000006C1 00 
+   134 000006C2 B1 CC DF D8 20 C6 20 C6 AD B3   	DB	0xB1,0xCC,0xDF,0xD8," ",0xC6," ",0xC6,0xAD,0xB3,0xD8,0xAE,0xB8," ",0xBB,0xDA,0xC0," ",0xB7,0xB0,0xBA,0xB0,0xC4,0xDE," ",0xA6,"   ",0x00
+       000006CC D8 AE B8 20 BB DA C0 20 B7 B0 
+       000006D6 BA B0 C4 DE 20 A6 20 20 20 00 
+   135 000006E0 CB AE B3 BC DE 20 BD D9 C0 DE   	DB	0xCB,0xAE,0xB3,0xBC,0xDE," ",0xBD,0xD9,0xC0,0xDE,0xB9," ",0xC9," ",0xC3,0xBD,0xC4," ",0xB1,0xCC,0xDF,0xD8," ",0xC3,0xDE,0xBD,0xA1,"  ",0x00
+       000006EA B9 20 C9 20 C3 BD C4 20 B1 CC 
+       000006F4 DF D8 20 C3 DE BD A1 20 20 00 
+   136 000006FE 00                              	DB	0x00
+   137 000006FF 00 00 00 00 00 00 00 00 00 00   	RESB	29
+       00000709 00 00 00 00 00 00 00 00 00 00 
+       00000713 00 00 00 00 00 00 00 00 00 
+   138 0000071C 00                              	DB	0x00
+   139 0000071D 00 00 00 00 00 00 00 00 00 00   	RESB	29
+       00000727 00 00 00 00 00 00 00 00 00 00 
+       00000731 00 00 00 00 00 00 00 00 00 
+   140 0000073A 00                              	DB	0x00
+   141 0000073B 00 00 00 00 00 00 00 00 00 00   	RESB	29
+       00000745 00 00 00 00 00 00 00 00 00 00 
+       0000074F 00 00 00 00 00 00 00 00 00 
+   142 00000758 6B 75 68 61 20 20 20 20 00      	DB	"kuha    ",0x00
+   143 00000761 00 00 00                        	RESB	3
+   144 00000764 00000000                        	DD	0
+   145 00000768 00                              	DB	0x00
+   146 00000769 00 00 00 00 00 00 00 00 00 00   	RESB	21
+       00000773 00 00 00 00 00 00 00 00 00 00 
+       0000077D 00 
+   147 0000077E D1 B6 BC 20 C5 C2 B6 BC 20 4E   	DB	0xD1,0xB6,0xBC," ",0xC5,0xC2,0xB6,0xBC," NEC PC-98x1",0xBC,0xD8,0xB0,0xBD,0xDE," ",0xC9,"  ",0x00
+       00000788 45 43 20 50 43 2D 39 38 78 31 
+       00000792 BC D8 B0 BD DE 20 C9 20 20 00 
+   148 0000079C B4 D0 AD DA B0 C0 20 C3 DE BD   	DB	0xB4,0xD0,0xAD,0xDA,0xB0,0xC0," ",0xC3,0xDE,0xBD,0xA1," ",0xCD,0xAF,0xCE,0xDF,0xBA," ",0xC5,0xC9,0xC3,0xDE," ",0xD2,0xD3,0xD8,0xB0,"  ",0x00
+       000007A6 A1 20 CD AF CE DF BA 20 C5 C9 
+       000007B0 C3 DE 20 D2 D3 D8 B0 20 20 00 
+   149 000007BA C3 BD C4 20 C1 AE B8 BA DE 20   	DB	0xC3,0xBD,0xC4," ",0xC1,0xAE,0xB8,0xBA,0xDE," ",0xC6," ",0xBB,0xB2,0xB7,0xC4,0xDE,0xB3," ",0xBC,0xC3,0xBC,0xCF,0xB2,0xCF,0xBD,0xA1,"  ",0x00
+       000007C4 C6 20 BB B2 B7 C4 DE B3 20 BC 
+       000007CE C3 BC CF B2 CF BD A1 20 20 00 
+   150 000007D8 CB DE B0 CC DF C9 20 C5 D9 20   	DB	0xCB,0xDE,0xB0,0xCC,0xDF,0xC9," ",0xC5,0xD9," ",0xB6,0xDD,0xB7,0xAE,0xB3,0xC3,0xDE," ",0xB5,0xC0,0xC9,0xBC,0xD0,0xB8,0xC0,0xDE,0xBB,0xB2,0xA1,0x00
+       000007E2 B6 DD B7 AE B3 C3 DE 20 B5 C0 
+       000007EC C9 BC D0 B8 C0 DE BB B2 A1 00 
+   151 000007F6 00                              	DB	0x00
+   152 000007F7 00 00 00 00 00 00 00 00 00 00   	RESB	29
+       00000801 00 00 00 00 00 00 00 00 00 00 
+       0000080B 00 00 00 00 00 00 00 00 00 
+   153 00000814 6C 75 63 6B 79 6E 75 6D 00      	DB	"luckynum",0x00
+   154 0000081D 00 00 00                        	RESB	3
+   155 00000820 00000000                        	DD	0
+   156 00000824 00                              	DB	0x00
+   157 00000825 00 00 00 00 00 00 00 00 00 00   	RESB	21
+       0000082F 00 00 00 00 00 00 00 00 00 00 
+       00000839 00 
+   158 0000083A D7 AF B7 B0 C5 DD CA DE B0 20   	DB	0xD7,0xAF,0xB7,0xB0,0xC5,0xDD,0xCA,0xDE,0xB0," ",0xC4," ",0xD7,0xAF,0xB7,0xB0,0xB6,0xD7,0xB0," ",0xA6," ",0xCB,0xAE,0xB3,0xBC,0xDE,"  ",0x00
+       00000844 C4 20 D7 AF B7 B0 B6 D7 B0 20 
+       0000084E A6 20 CB AE B3 BC DE 20 20 00 
+   159 00000858 BC C3 B8 DA D9 20 B1 CC DF D8   	DB	0xBC,0xC3,0xB8,0xDA,0xD9," ",0xB1,0xCC,0xDF,0xD8,0xC3,0xDE,0xBD,0xA1," ",0xB5,0xC3,0xDE,0xB6,0xB9,0xCF,0xB4," ",0xC6," ",0xC1,0xAA,0xAF,0xB8,0x00
+       00000862 C3 DE BD A1 20 B5 C3 DE B6 B9 
+       0000086C CF B4 20 C6 20 C1 AA AF B8 00 
+   160 00000876 BC C3 D0 C3 20 B8 C0 DE BB B2   	DB	0xBC,0xC3,0xD0,0xC3," ",0xB8,0xC0,0xDE,0xBB,0xB2,0xA1,"                  ",0x00
+       00000880 A1 20 20 20 20 20 20 20 20 20 
+       0000088A 20 20 20 20 20 20 20 20 20 00 
+   161 00000894 00                              	DB	0x00
+   162 00000895 00 00 00 00 00 00 00 00 00 00   	RESB	29
+       0000089F 00 00 00 00 00 00 00 00 00 00 
+       000008A9 00 00 00 00 00 00 00 00 00 
+   163 000008B2 00                              	DB	0x00
+   164 000008B3 00 00 00 00 00 00 00 00 00 00   	RESB	29
+       000008BD 00 00 00 00 00 00 00 00 00 00 
+       000008C7 00 00 00 00 00 00 00 00 00 
+   165 000008D0 6D 6D 6C 70 6C 61 79 20 00      	DB	"mmlplay ",0x00
+   166 000008D9 00 00 00                        	RESB	3
+   167 000008DC 00000001                        	DD	1
+   168 000008E0 6D 6D 6C 70 6C 61 79 20 66 75   	DB	"mmlplay fujisan.mml",0x00
+       000008EA 6A 69 73 61 6E 2E 6D 6D 6C 00 
+   169 000008F4 00 00                           	RESB	2
+   170 000008F6 4F 53 BC DE BB B8 C6 AD B3 D3   	DB	"OS",0xBC,0xDE,0xBB,0xB8,0xC6,0xAD,0xB3,0xD3,0xDD," 30",0xC6,0xC1,0xD2,0xD6,0xD8," mml",0xCC,0xDF,0xDA,0xB0,0xD4,0xB0,0x00
+       00000900 DD 20 33 30 C6 C1 D2 D6 D8 20 
+       0000090A 6D 6D 6C CC DF DA B0 D4 B0 00 
+   171 00000914 C3 DE BD A1 20 CB DE B0 CC DF   	DB	0xC3,0xDE,0xBD,0xA1," ",0xCB,0xDE,0xB0,0xCC,0xDF," ",0xB5,0xDD," ",0xC9," ",0xBC,0xDD,0xCC,0xDF,0xD9," ",0xC3,0xDE," ",0xBF,0xCE,0xDE,0xB8,0x00
+       0000091E 20 B5 DD 20 C9 20 BC DD CC DF 
+       00000928 D9 20 C3 DE 20 BF CE DE B8 00 
+   172 00000932 C5 20 D2 DB C3 DE A8 B0 20 A6   	DB	0xC5," ",0xD2,0xDB,0xC3,0xDE,0xA8,0xB0," ",0xA6,0xB5,0xC0,0xC9,0xBC,0xD0," ",0xB8,0xC0,0xDE,0xBB,0xB2,0xA5,0xA5,0xA5,0xA5,0xA5,0xA5,0xA1," ",0x00
+       0000093C B5 C0 C9 BC D0 20 B8 C0 DE BB 
+       00000946 B2 A5 A5 A5 A5 A5 A5 A1 20 00 
+   173 00000950 00                              	DB	0x00
+   174 00000951 00 00 00 00 00 00 00 00 00 00   	RESB	29
+       0000095B 00 00 00 00 00 00 00 00 00 00 
+       00000965 00 00 00 00 00 00 00 00 00 
+   175 0000096E 00                              	DB	0x00
+   176 0000096F 00 00 00 00 00 00 00 00 00 00   	RESB	29
+       00000979 00 00 00 00 00 00 00 00 00 00 
+       00000983 00 00 00 00 00 00 00 00 00 
+   177 0000098C 6D 74 6F 72 7A 20 20 20 00      	DB	"mtorz   ",0x00
+   178 00000995 00 00 00                        	RESB	3
+   179 00000998 00000000                        	DD	0
+   180 0000099C 00                              	DB	0x00
+   181 0000099D 00 00 00 00 00 00 00 00 00 00   	RESB	21
+       000009A7 00 00 00 00 00 00 00 00 00 00 
+       000009B1 00 
+   182 000009B2 6F 72 7A 20 B6 DE 20 31 30 C6   	DB	"orz ",0xB6,0xDE," 10",0xC6,0xDD," ",0xD4,0xCF," ",0xA6," ",0xC2,0xB8,0xAF,0xC3," ",0xB2,0xCF,0xBD,0xA1,"   ",0x00
+       000009BC DD 20 D4 CF 20 A6 20 C2 B8 AF 
+       000009C6 C3 20 B2 CF BD A1 20 20 20 00 
+   183 000009D0 BC B6 D3 A4 20 C5 C5 B2 DB 20   	DB	0xBC,0xB6,0xD3,0xA4," ",0xC5,0xC5,0xB2,0xDB," ",0xC6," ",0xCB,0xDF,0xB6,0xCB,0xDF,0xB6," ",0xB6,0xB6,0xDE,0xD4,0xB7," ",0xCF,0xBD,0xA1," ",0x00
+       000009DA C6 20 CB DF B6 CB DF B6 20 B6 
+       000009E4 B6 DE D4 B7 20 CF BD A1 20 00 
+   184 000009EE B1 B7 C0 D7 20 BC AD B3 D8 AE   	DB	0xB1,0xB7,0xC0,0xD7," ",0xBC,0xAD,0xB3,0xD8,0xAE,0xB3," ",0xBB,0xBE,0xC3,0xB8,0xC0,0xDE,0xBB,0xB2,0xA1,"        ",0x00
+       000009F8 B3 20 BB BE C3 B8 C0 DE BB B2 
+       00000A02 A1 20 20 20 20 20 20 20 20 00 
+   185 00000A0C 00                              	DB	0x00
+   186 00000A0D 00 00 00 00 00 00 00 00 00 00   	RESB	29
+       00000A17 00 00 00 00 00 00 00 00 00 00 
+       00000A21 00 00 00 00 00 00 00 00 00 
+   187 00000A2A 00                              	DB	0x00
+   188 00000A2B 00 00 00 00 00 00 00 00 00 00   	RESB	29
+       00000A35 00 00 00 00 00 00 00 00 00 00 
+       00000A3F 00 00 00 00 00 00 00 00 00 
+   189 00000A48 6E 6F 6F 64 6C 65 20 20 00      	DB	"noodle  ",0x00
+   190 00000A51 00 00 00                        	RESB	3
+   191 00000A54 00000000                        	DD	0
+   192 00000A58 00                              	DB	0x00
+   193 00000A59 00 00 00 00 00 00 00 00 00 00   	RESB	21
+       00000A63 00 00 00 00 00 00 00 00 00 00 
+       00000A6D 00 
+   194 00000A6E 4F 53 BC DE BB B8 C6 AD B3 D3   	DB	"OS",0xBC,0xDE,0xBB,0xB8,0xC6,0xAD,0xB3,0xD3,0xDD," 24",0xC6,0xC1,0xD2,0xD6,0xD8," ",0xD7,0xB0,0xD2,0xDD,0xC0,0xB2,0xCF,0xB0," ",0x00
+       00000A78 DD 20 32 34 C6 C1 D2 D6 D8 20 
+       00000A82 D7 B0 D2 DD C0 B2 CF B0 20 00 
+   195 00000A8C C3 DE BD A1 20 B1 D7 3F 20 BF   	DB	0xC3,0xDE,0xBD,0xA1," ",0xB1,0xD7,"? ",0xBF,0xBA,0xC6," ",0xC1,0xAE,0xB3,0xC4,0xDE," ",0xB6,0xAF,0xCC,0xDF,0xD2,0xDD," ",0xB6,0xDE," ",0x00
+       00000A96 BA C6 20 C1 AE B3 C4 DE 20 B6 
+       00000AA0 AF CC DF D2 DD 20 B6 DE 20 00 
+   196 00000AAA B1 D8 CF BD C8 A1 20 BC DE AC   	DB	0xB1,0xD8,0xCF,0xBD,0xC8,0xA1," ",0xBC,0xDE,0xAC,0xB1," ",0xC1,0xAE,0xAF,0xC4," ",0xBA,0xC9," ",0xC0,0xB2,0xCF,0xB0," ",0xC3,0xDE,"  ",0x00
+       00000AB4 B1 20 C1 AE AF C4 20 BA C9 20 
+       00000ABE C0 B2 CF B0 20 C3 DE 20 20 00 
+   197 00000AC8 C2 B8 AF C3 20 D0 CF BC AE B3   	DB	0xC2,0xB8,0xAF,0xC3," ",0xD0,0xCF,0xBC,0xAE,0xB3,0xD6,"?                 ",0x00
+       00000AD2 D6 3F 20 20 20 20 20 20 20 20 
+       00000ADC 20 20 20 20 20 20 20 20 20 00 
+   198 00000AE6 00                              	DB	0x00
+   199 00000AE7 00 00 00 00 00 00 00 00 00 00   	RESB	29
+       00000AF1 00 00 00 00 00 00 00 00 00 00 
+       00000AFB 00 00 00 00 00 00 00 00 00 
+   200 00000B04 73 74 62 65 65 70 20 20 00      	DB	"stbeep  ",0x00
+   201 00000B0D 00 00 00                        	RESB	3
+   202 00000B10 00000000                        	DD	0
+   203 00000B14 00                              	DB	0x00
+   204 00000B15 00 00 00 00 00 00 00 00 00 00   	RESB	21
+       00000B1F 00 00 00 00 00 00 00 00 00 00 
+       00000B29 00 
+   205 00000B2A BB AF CE DF DB BC B4 B2 C1 B6   	DB	0xBB,0xAF,0xCE,0xDF,0xDB,0xBC,0xB4,0xB2,0xC1,0xB6,0xC3,0xC2," ",0xC4,0xB3,0xCE,0xB3,0xBE,0xDD," ",0xC9," ",0xC4,0xDE,0xB1," ",0xB6,0xDE," ",0x00
+       00000B34 C3 C2 20 C4 B3 CE B3 BE DD 20 
+       00000B3E C9 20 C4 DE B1 20 B6 DE 20 00 
+   206 00000B48 C4 BC DE D9 C4 B7 20 C9 20 B5   	DB	0xC4,0xBC,0xDE,0xD9,0xC4,0xB7," ",0xC9," ",0xB5,0xC4," ",0xA6," ",0xBB,0xB2,0xB9,0xDE,0xDD,0xBC,0xC0," ",0xB1,0xCC,0xDF,0xD8,0xC3,0xDE,0xBD,0x00
+       00000B52 C4 20 A6 20 BB B2 B9 DE DD BC 
+       00000B5C C0 20 B1 CC DF D8 C3 DE BD 00 
+   207 00000B66 A1 20 CB DE B0 CC DF C3 DE C9   	DB	0xA1," ",0xCB,0xDE,0xB0,0xCC,0xDF,0xC3,0xDE,0xC9," ",0xBB,0xB2,0xB9,0xDE,0xDD," ",0xC3,0xDE,0xCA,0xA4," ",0xB9,0xDE,0xDD,0xB6,0xB2,0xB6,0xDE,0x00
+       00000B70 20 BB B2 B9 DE DD 20 C3 DE CA 
+       00000B7A A4 20 B9 DE DD B6 B2 B6 DE 00 
+   208 00000B84 B1 D9 D6 B3 C3 DE BD A1 20 BC   	DB	0xB1,0xD9,0xD6,0xB3,0xC3,0xDE,0xBD,0xA1," ",0xBC,0xDE,0xAF,0xB7,0xC3,0xDE,0xC9," ",0xB7,0xC4,0xDE,0xB3,0xA6," ",0xBD,0xB2,0xBC,0xAE,0xB3,0xA1,0x00
+       00000B8E DE AF B7 C3 DE C9 20 B7 C4 DE 
+       00000B98 B3 A6 20 BD B2 BC AE B3 A1 00 
+   209 00000BA2 B6 DE BF DE B3 20 D6 D0 BA D0   	DB	0xB6,0xDE,0xBF,0xDE,0xB3," ",0xD6,0xD0,0xBA,0xD0," API ",0xC9," ",0xBB,0xDD,0xCC,0xDF,0xD9,0xA1,"      ",0x00
+       00000BAC 20 41 50 49 20 C9 20 BB DD CC 
+       00000BB6 DF D9 A1 20 20 20 20 20 20 00 
+   210 00000BC0 6F 73 61 6B 63 6E 74 20 00      	DB	"osakcnt ",0x00
+   211 00000BC9 00 00 00                        	RESB	3
+   212 00000BCC 00000000                        	DD	0
+   213 00000BD0 00                              	DB	0x00
+   214 00000BD1 00 00 00 00 00 00 00 00 00 00   	RESB	21
+       00000BDB 00 00 00 00 00 00 00 00 00 00 
+       00000BE5 00 
+   215 00000BE6 4F 53 41 6B 6B 69 65 20 B6 DE   	DB	"OSAkkie ",0xB6,0xDE," ",0xB7,0xC4,0xDE,0xB3," ",0xBC,0xC3,0xB6,0xD7,0xC9," ",0xBC,0xDE,0xB6,0xDD," ",0xA6," ",0x00
+       00000BF0 20 B7 C4 DE B3 20 BC C3 B6 D7 
+       00000BFA C9 20 BC DE B6 DD 20 A6 20 00 
+   216 00000C04 CB AE B3 BC DE 20 BD D9 20 B1   	DB	0xCB,0xAE,0xB3,0xBC,0xDE," ",0xBD,0xD9," ",0xB1,0xCC,0xDF,0xD8," ",0xC3,0xDE,0xBD,0xA1,"           ",0x00
+       00000C0E CC DF D8 20 C3 DE BD A1 20 20 
+       00000C18 20 20 20 20 20 20 20 20 20 00 
+   217 00000C22 74 6F 6D 6F 5F 67 65 74 74 69   	DB	"tomo_gettick(); ",0xC9," ",0xBB,0xDD,0xCC,0xDF,0xD9," ",0xB1,0xCC,0xDF,0xD8,0xA1,0x00
+       00000C2C 63 6B 28 29 3B 20 C9 20 BB DD 
+       00000C36 CC DF D9 20 B1 CC DF D8 A1 00 
+   218 00000C40 00                              	DB	0x00
+   219 00000C41 00 00 00 00 00 00 00 00 00 00   	RESB	29
+       00000C4B 00 00 00 00 00 00 00 00 00 00 
+       00000C55 00 00 00 00 00 00 00 00 00 
+   220 00000C5E 00                              	DB	0x00
+   221 00000C5F 00 00 00 00 00 00 00 00 00 00   	RESB	29
+       00000C69 00 00 00 00 00 00 00 00 00 00 
+       00000C73 00 00 00 00 00 00 00 00 00 
+   222 00000C7C 74 76 69 65 77 20 20 20 00      	DB	"tview   ",0x00
+   223 00000C85 00 00 00                        	RESB	3
+   224 00000C88 00000001                        	DD	1
+   225 00000C8C 74 76 69 65 77 20 73 61 6D 70   	DB	"tview sample.txt -w42",0x00
+       00000C96 6C 65 2E 74 78 74 20 2D 77 34 
+       00000CA0 32 00 
+   226 00000CA2 4F 53 BC DE BB B8 C6 AD B3 D3   	DB	"OS",0xBC,0xDE,0xBB,0xB8,0xC6,0xAD,0xB3,0xD3,0xDD," 30",0xC6,0xC1,0xD2,0xD6,0xD8," ",0xC3,0xB7,0xBD,0xC4,0xCB,0xDE,0xAD,0xB0,0xB1,0x00
+       00000CAC DD 20 33 30 C6 C1 D2 D6 D8 20 
+       00000CB6 C3 B7 BD C4 CB DE AD B0 B1 00 
+   227 00000CC0 C3 DE BD A1 20 BB DD CC DF D9   	DB	0xC3,0xDE,0xBD,0xA1," ",0xBB,0xDD,0xCC,0xDF,0xD9," ",0xC4," ",0xBC,0xC3," ",0xC6,0xCE,0xDD,0xBA,0xB8," ",0xB9,0xDD,0xCE,0xDF,0xB3,"  ",0x00
+       00000CCA 20 C4 20 BC C3 20 C6 CE DD BA 
+       00000CD4 B8 20 B9 DD CE DF B3 20 20 00 
+   228 00000CDE BE DE DD CC DE DD 20 A6 20 D6   	DB	0xBE,0xDE,0xDD,0xCC,0xDE,0xDD," ",0xA6," ",0xD6,0xB3,0xB2," ",0xBC,0xCF,0xBC,0xC0,0xA1,"           ",0x00
+       00000CE8 B3 B2 20 BC CF BC C0 A1 20 20 
+       00000CF2 20 20 20 20 20 20 20 20 20 00 
+   229 00000CFC 00                              	DB	0x00
+   230 00000CFD 00 00 00 00 00 00 00 00 00 00   	RESB	29
+       00000D07 00 00 00 00 00 00 00 00 00 00 
+       00000D11 00 00 00 00 00 00 00 00 00 
+   231 00000D1A 00                              	DB	0x00
+   232 00000D1B 00 00 00 00 00 00 00 00 00 00   	RESB	29
+       00000D25 00 00 00 00 00 00 00 00 00 00 
+       00000D2F 00 00 00 00 00 00 00 00 00 
+   233 00000D38 77 61 6C 6B 20 20 20 20 00      	DB	"walk    ",0x00
+   234 00000D41 00 00 00                        	RESB	3
+   235 00000D44 00000000                        	DD	0
+   236 00000D48 00                              	DB	0x00
+   237 00000D49 00 00 00 00 00 00 00 00 00 00   	RESB	21
+       00000D53 00 00 00 00 00 00 00 00 00 00 
+       00000D5D 00 
+   238 00000D5E 4F 53 BC DE BB B8 C6 AD B3 D3   	DB	"OS",0xBC,0xDE,0xBB,0xB8,0xC6,0xAD,0xB3,0xD3,0xDD," 23",0xC6,0xC1,0xD2,0xD6,0xD8," ",0xB7,0xB0," ",0xC6,0xAD,0xB3,0xD8,0xAE,0xB8,0x00
+       00000D68 DD 20 32 33 C6 C1 D2 D6 D8 20 
+       00000D72 B7 B0 20 C6 AD B3 D8 AE B8 00 
+   239 00000D7C C3 BD C4 20 B1 CC DF D8 20 C3   	DB	0xC3,0xBD,0xC4," ",0xB1,0xCC,0xDF,0xD8," ",0xC3,0xDE,0xBD,0xA1," ",0xB4,0xD3,0xBC,0xDE," ",0xA6," ",0xC4,0xB3,0xBB,0xB2," ",0xBC,0xC3,0xD9,0x00
+       00000D86 DE BD A1 20 B4 D3 BC DE 20 A6 
+       00000D90 20 C4 B3 BB B2 20 BC C3 D9 00 
+   240 00000D9A 4F 53 41 6B 6B 69 65 20 C3 DE   	DB	"OSAkkie ",0xC3,0xDE,0xCA,0xA4," ",0xC5,0xB5,0xD0,0xBB,0xDD," ",0xB6,0xDE," ",0xB1,0xD9,0xB7,0xCF,0xBD,0xA1," ",0x00
+       00000DA4 CA A4 20 C5 B5 D0 BB DD 20 B6 
+       00000DAE DE 20 B1 D9 B7 CF BD A1 20 00 
+   241 00000DB8 00                              	DB	0x00
+   242 00000DB9 00 00 00 00 00 00 00 00 00 00   	RESB	29
+       00000DC3 00 00 00 00 00 00 00 00 00 00 
+       00000DCD 00 00 00 00 00 00 00 00 00 
+   243 00000DD6 00                              	DB	0x00
+   244 00000DD7 00 00 00 00 00 00 00 00 00 00   	RESB	29
+       00000DE1 00 00 00 00 00 00 00 00 00 00 
+       00000DEB 00 00 00 00 00 00 00 00 00 
+   245 00000DF4 77 69 6E 68 65 6C 6C 6F 00      	DB	"winhello",0x00
+   246 00000DFD 00 00 00                        	RESB	3
+   247 00000E00 00000000                        	DD	0
+   248 00000E04 00                              	DB	0x00
+   249 00000E05 00 00 00 00 00 00 00 00 00 00   	RESB	21
+       00000E0F 00 00 00 00 00 00 00 00 00 00 
+       00000E19 00 
+   250 00000E1A 4F 53 BC DE BB B8 C6 AD B3 D3   	DB	"OS",0xBC,0xDE,0xBB,0xB8,0xC6,0xAD,0xB3,0xD3,0xDD," 22",0xC6,0xC1,0xD2,0xD6,0xD8," ",0xB3,0xA8,0xDD,0xC4,0xDE,0xB3,"   ",0x00
+       00000E24 DD 20 32 32 C6 C1 D2 D6 D8 20 
+       00000E2E B3 A8 DD C4 DE B3 20 20 20 00 
+   251 00000E38 CB AE B3 BC DE 20 C3 BD C4 20   	DB	0xCB,0xAE,0xB3,0xBC,0xDE," ",0xC3,0xBD,0xC4," ",0xC3,0xDE,0xBD,0xA1," OSAkkie ",0xD0,0xC6,0xCC,0xAB,0xDD,0xC4,0x00
+       00000E42 C3 DE BD A1 20 4F 53 41 6B 6B 
+       00000E4C 69 65 20 D0 C6 CC AB DD C4 00 
+   252 00000E56 C9 20 CB AE B3 BC DE 20 C3 BD   	DB	0xC9," ",0xCB,0xAE,0xB3,0xBC,0xDE," ",0xC3,0xBD,0xC4," ",0xD3," ",0xD4,0xAF,0xC3," ",0xD0,0xCF,0xBC,0xC0,0xA1,"      ",0x00
+       00000E60 C4 20 D3 20 D4 AF C3 20 D0 CF 
+       00000E6A BC C0 A1 20 20 20 20 20 20 00 
+   253 00000E74 00                              	DB	0x00
+   254 00000E75 00 00 00 00 00 00 00 00 00 00   	RESB	29
+       00000E7F 00 00 00 00 00 00 00 00 00 00 
+       00000E89 00 00 00 00 00 00 00 00 00 
+   255 00000E92 00                              	DB	0x00
+   256 00000E93 00 00 00 00 00 00 00 00 00 00   	RESB	29
+       00000E9D 00 00 00 00 00 00 00 00 00 00 
+       00000EA7 00 00 00 00 00 00 00 00 00 
+   257 00000EB0                                 _title.0:
+   258 00000EB0 4F 53 41 6B 6B 69 65 20 61 70   	DB	"OSAkkie application launcher",0x00
+       00000EBA 70 6C 69 63 61 74 69 6F 6E 20 
+       00000EC4 6C 61 75 6E 63 68 65 72 00 
+   259 00000ECD                                 LC0:
+   260 00000ECD 57 65 6C 63 6F 6D 65 20 74 6F   	DB	"Welcome to OSAkkie.",0x00
+       00000ED7 20 4F 53 41 6B 6B 69 65 2E 00 
+   261 00000EE1                                 LC1:
+   262 00000EE1 3C 3C 20 20 20 20 2F 20 20 20   	DB	"<<    /    >>",0x00
+       00000EEB 20 3E 3E 00 
+   263                                          [SECTION .text]
+   264 00000000                                 	GLOBAL	_HariMain
+   265 00000000                                 _HariMain:
+   266 00000000 55                              	PUSH	EBP
+   267 00000001 89 E5                           	MOV	EBP,ESP
+   268 00000003 57                              	PUSH	EDI
+   269 00000004 56                              	PUSH	ESI
+   270 00000005 31 FF                           	XOR	EDI,EDI
+   271 00000007 53                              	PUSH	EBX
+   272 00000008 31 F6                           	XOR	ESI,ESI
+   273 0000000A 50                              	PUSH	EAX
+   274 0000000B 50                              	PUSH	EAX
+   275 0000000C E8 [00000000]                   	CALL	_osak_getbuflen
+   276 00000011 69 C0 0001D4C0                  	IMUL	EAX,EAX,120000
+   277 00000017 83 C0 10                        	ADD	EAX,16
+   278 0000001A E8 [00000000]                   	CALL	__alloca
+   279 0000001F 8D 5C 24 0F                     	LEA	EBX,DWORD [15+ESP]
+   280 00000023 6A 00                           	PUSH	0
+   281 00000025 83 E3 F0                        	AND	EBX,-16
+   282 00000028 E8 [00000000]                   	CALL	_tomo_setlang
+   283 0000002D 68 [00000ECD]                   	PUSH	LC0
+   284 00000032 6A FF                           	PUSH	-1
+   285 00000034 68 0000012C                     	PUSH	300
+   286 00000039 68 00000190                     	PUSH	400
+   287 0000003E 53                              	PUSH	EBX
+   288 0000003F E8 [00000000]                   	CALL	_api_openwin
+   289 00000044 6A 07                           	PUSH	7
+   290 00000046 68 00000124                     	PUSH	292
+   291 0000004B A3 [00000EFC]                   	MOV	DWORD [_win],EAX
+   292 00000050 68 00000188                     	PUSH	392
+   293 00000055 6A 1C                           	PUSH	28
+   294 00000057 6A 06                           	PUSH	6
+   295 00000059 50                              	PUSH	EAX
+   296 0000005A E8 [00000000]                   	CALL	_api_boxfilwin
+   297 0000005F 83 C4 30                        	ADD	ESP,48
+   298 00000062 E8 [00000000]                   	CALL	_api_alloctimer
+   299 00000067 68 00000080                     	PUSH	128
+   300 0000006C A3 [00000F00]                   	MOV	DWORD [_timer],EAX
+   301 00000071 50                              	PUSH	EAX
+   302 00000072 E8 [00000000]                   	CALL	_api_inittimer
+   303 00000077 6A 0A                           	PUSH	10
+   304 00000079 E8 000003E2                     	CALL	_wait
+   305 0000007E 83 C4 0C                        	ADD	ESP,12
+   306 00000081 C7 45 EC 00000002               	MOV	DWORD [-20+EBP],2
+   307 00000088                                 L6:
+   308 00000088 6A 03                           	PUSH	3
+   309 0000008A E8 000003D1                     	CALL	_wait
+   310 0000008F 68 [00000EB0]                   	PUSH	_title.0
+   311 00000094 6A 25                           	PUSH	37
+   312 00000096 68 00FFFFFF                     	PUSH	16777215
+   313 0000009B 6A 28                           	PUSH	40
+   314 0000009D 6A 0C                           	PUSH	12
+   315 0000009F FF 35 [00000EFC]                	PUSH	DWORD [_win]
+   316 000000A5 E8 [00000000]                   	CALL	_osak_putministrwin
+   317 000000AA 6A 03                           	PUSH	3
+   318 000000AC E8 000003AF                     	CALL	_wait
+   319 000000B1 83 C4 20                        	ADD	ESP,32
+   320 000000B4 68 [00000EB0]                   	PUSH	_title.0
+   321 000000B9 6A 25                           	PUSH	37
+   322 000000BB 6A 00                           	PUSH	0
+   323 000000BD 6A 28                           	PUSH	40
+   324 000000BF 6A 0C                           	PUSH	12
+   325 000000C1 FF 35 [00000EFC]                	PUSH	DWORD [_win]
+   326 000000C7 E8 [00000000]                   	CALL	_osak_putministrwin
+   327 000000CC 83 C4 18                        	ADD	ESP,24
+   328 000000CF FF 4D EC                        	DEC	DWORD [-20+EBP]
+   329 000000D2 79 B4                           	JNS	L6
+   330 000000D4 6A 0A                           	PUSH	10
+   331 000000D6 E8 00000385                     	CALL	_wait
+   332 000000DB 6A 00                           	PUSH	0
+   333 000000DD 6A 19                           	PUSH	25
+   334 000000DF 68 00000182                     	PUSH	386
+   335 000000E4 6A 19                           	PUSH	25
+   336 000000E6 6A 00                           	PUSH	0
+   337 000000E8 E8 00000199                     	CALL	_putline
+   338 000000ED 6A 0A                           	PUSH	10
+   339 000000EF E8 0000036C                     	CALL	_wait
+   340 000000F4 6A 00                           	PUSH	0
+   341 000000F6 68 000000FB                     	PUSH	251
+   342 000000FB 6A 5A                           	PUSH	90
+   343 000000FD 68 000000FB                     	PUSH	251
+   344 00000102 6A 00                           	PUSH	0
+   345 00000104 E8 0000017D                     	CALL	_putline
+   346 00000109 83 C4 30                        	ADD	ESP,48
+   347 0000010C 6A 0A                           	PUSH	10
+   348 0000010E E8 0000034D                     	CALL	_wait
+   349 00000113 6A 00                           	PUSH	0
+   350 00000115 68 00000108                     	PUSH	264
+   351 0000011A 6A 5A                           	PUSH	90
+   352 0000011C 6A 19                           	PUSH	25
+   353 0000011E 6A 5A                           	PUSH	90
+   354 00000120 E8 00000161                     	CALL	_putline
+   355 00000125 83 C4 18                        	ADD	ESP,24
+   356 00000128 C6 45 F2 32                     	MOV	BYTE [-14+EBP],50
+   357 0000012C 68 [00000EE1]                   	PUSH	LC1
+   358 00000131 6A 0E                           	PUSH	14
+   359 00000133 6A 15                           	PUSH	21
+   360 00000135 6A 01                           	PUSH	1
+   361 00000137 C6 45 F3 00                     	MOV	BYTE [-13+EBP],0
+   362 0000013B E8 00000100                     	CALL	_putstr
+   363 00000140 8D 45 F2                        	LEA	EAX,DWORD [-14+EBP]
+   364 00000143 50                              	PUSH	EAX
+   365 00000144 6A 01                           	PUSH	1
+   366 00000146 6A 15                           	PUSH	21
+   367 00000148 6A 09                           	PUSH	9
+   368 0000014A E8 000000F1                     	CALL	_putstr
+   369 0000014F 83 C4 20                        	ADD	ESP,32
+   370 00000152 6A 00                           	PUSH	0
+   371 00000154 E8 0000022A                     	CALL	_putitems
+   372 00000159 89 C3                           	MOV	EBX,EAX
+   373 0000015B                                 L26:
+   374 0000015B 58                              	POP	EAX
+   375 0000015C                                 L8:
+   376 0000015C 6A 01                           	PUSH	1
+   377 0000015E E8 [00000000]                   	CALL	_api_getkey
+   378 00000163 59                              	POP	ECX
+   379 00000164 3D 000000B8                     	CMP	EAX,184
+   380 00000169 89 45 EC                        	MOV	DWORD [-20+EBP],EAX
+   381 0000016C 0F 84 000000A6                  	JE	L28
+   382 00000172                                 L11:
+   383 00000172 81 7D EC 000000B2               	CMP	DWORD [-20+EBP],178
+   384 00000179 74 76                           	JE	L29
+   385 0000017B                                 L13:
+   386 0000017B 81 7D EC 000000B4               	CMP	DWORD [-20+EBP],180
+   387 00000182 74 51                           	JE	L30
+   388 00000184                                 L15:
+   389 00000184 81 7D EC 000000B6               	CMP	DWORD [-20+EBP],182
+   390 0000018B 74 2C                           	JE	L31
+   391 0000018D                                 L18:
+   392 0000018D 83 7D EC 0A                     	CMP	DWORD [-20+EBP],10
+   393 00000191 75 C9                           	JNE	L8
+   394 00000193 8D 04 3E                        	LEA	EAX,DWORD [ESI+EDI*1]
+   395 00000196 69 C0 000000BC                  	IMUL	EAX,EAX,188
+   396 0000019C 83 B8 [0000000C] 00             	CMP	DWORD [_list+12+EAX],0
+   397 000001A3 74 0D                           	JE	L32
+   398 000001A5 05 [00000010]                   	ADD	EAX,_list+16
+   399 000001AA                                 L27:
+   400 000001AA 50                              	PUSH	EAX
+   401 000001AB E8 [00000000]                   	CALL	_osak_exec
+   402 000001B0 EB A9                           	JMP	L26
+   403 000001B2                                 L32:
+   404 000001B2 05 [00000000]                   	ADD	EAX,_list
+   405 000001B7 EB F1                           	JMP	L27
+   406 000001B9                                 L31:
+   407 000001B9 8D 04 3B                        	LEA	EAX,DWORD [EBX+EDI*1]
+   408 000001BC 83 F8 13                        	CMP	EAX,19
+   409 000001BF 7F 10                           	JG	L19
+   410 000001C1 83 C7 0F                        	ADD	EDI,15
+   411 000001C4                                 L20:
+   412 000001C4 57                              	PUSH	EDI
+   413 000001C5 31 F6                           	XOR	ESI,ESI
+   414 000001C7 E8 000001B7                     	CALL	_putitems
+   415 000001CC 89 C3                           	MOV	EBX,EAX
+   416 000001CE 58                              	POP	EAX
+   417 000001CF EB BC                           	JMP	L18
+   418 000001D1                                 L19:
+   419 000001D1 31 FF                           	XOR	EDI,EDI
+   420 000001D3 EB EF                           	JMP	L20
+   421 000001D5                                 L30:
+   422 000001D5 83 FF 08                        	CMP	EDI,8
+   423 000001D8 7E 10                           	JLE	L16
+   424 000001DA 83 EF 0F                        	SUB	EDI,15
+   425 000001DD                                 L17:
+   426 000001DD 57                              	PUSH	EDI
+   427 000001DE 31 F6                           	XOR	ESI,ESI
+   428 000001E0 E8 0000019E                     	CALL	_putitems
+   429 000001E5 5A                              	POP	EDX
+   430 000001E6 89 C3                           	MOV	EBX,EAX
+   431 000001E8 EB 9A                           	JMP	L15
+   432 000001EA                                 L16:
+   433 000001EA BF 0000000F                     	MOV	EDI,15
+   434 000001EF EB EC                           	JMP	L17
+   435 000001F1                                 L29:
+   436 000001F1 68 00FFFFFF                     	PUSH	16777215
+   437 000001F6 57                              	PUSH	EDI
+   438 000001F7 56                              	PUSH	ESI
+   439 000001F8 46                              	INC	ESI
+   440 000001F9 E8 000000B7                     	CALL	_putcursor
+   441 000001FE 83 C4 0C                        	ADD	ESP,12
+   442 00000201 39 F3                           	CMP	EBX,ESI
+   443 00000203 7F 02                           	JG	L14
+   444 00000205 31 F6                           	XOR	ESI,ESI
+   445 00000207                                 L14:
+   446 00000207 6A 00                           	PUSH	0
+   447 00000209 57                              	PUSH	EDI
+   448 0000020A 56                              	PUSH	ESI
+   449 0000020B E8 000000A5                     	CALL	_putcursor
+   450 00000210 83 C4 0C                        	ADD	ESP,12
+   451 00000213 E9 FFFFFF63                     	JMP	L13
+   452 00000218                                 L28:
+   453 00000218 68 00FFFFFF                     	PUSH	16777215
+   454 0000021D 57                              	PUSH	EDI
+   455 0000021E 56                              	PUSH	ESI
+   456 0000021F E8 00000091                     	CALL	_putcursor
+   457 00000224 83 C4 0C                        	ADD	ESP,12
+   458 00000227 4E                              	DEC	ESI
+   459 00000228 78 11                           	JS	L33
+   460 0000022A                                 L12:
+   461 0000022A 6A 00                           	PUSH	0
+   462 0000022C 57                              	PUSH	EDI
+   463 0000022D 56                              	PUSH	ESI
+   464 0000022E E8 00000082                     	CALL	_putcursor
+   465 00000233 83 C4 0C                        	ADD	ESP,12
+   466 00000236 E9 FFFFFF37                     	JMP	L11
+   467 0000023B                                 L33:
+   468 0000023B 8D 73 FF                        	LEA	ESI,DWORD [-1+EBX]
+   469 0000023E EB EA                           	JMP	L12
+   470 00000240                                 	GLOBAL	_putstr
+   471 00000240                                 _putstr:
+   472 00000240 55                              	PUSH	EBP
+   473 00000241 89 E5                           	MOV	EBP,ESP
+   474 00000243 56                              	PUSH	ESI
+   475 00000244 53                              	PUSH	EBX
+   476 00000245 6B 75 0C 0C                     	IMUL	ESI,DWORD [12+EBP],12
+   477 00000249 6B 5D 08 06                     	IMUL	EBX,DWORD [8+EBP],6
+   478 0000024D 6A 07                           	PUSH	7
+   479 0000024F 8D 46 28                        	LEA	EAX,DWORD [40+ESI]
+   480 00000252 50                              	PUSH	EAX
+   481 00000253 83 C6 1C                        	ADD	ESI,28
+   482 00000256 8D 43 0D                        	LEA	EAX,DWORD [13+EBX]
+   483 00000259 83 C3 06                        	ADD	EBX,6
+   484 0000025C 50                              	PUSH	EAX
+   485 0000025D 56                              	PUSH	ESI
+   486 0000025E 53                              	PUSH	EBX
+   487 0000025F FF 35 [00000EFC]                	PUSH	DWORD [_win]
+   488 00000265 E8 [00000000]                   	CALL	_api_boxfilwin
+   489 0000026A FF 75 14                        	PUSH	DWORD [20+EBP]
+   490 0000026D FF 75 10                        	PUSH	DWORD [16+EBP]
+   491 00000270 6A 00                           	PUSH	0
+   492 00000272 56                              	PUSH	ESI
+   493 00000273 53                              	PUSH	EBX
+   494 00000274 FF 35 [00000EFC]                	PUSH	DWORD [_win]
+   495 0000027A E8 [00000000]                   	CALL	_osak_putministrwin
+   496 0000027F 8D 65 F8                        	LEA	ESP,DWORD [-8+EBP]
+   497 00000282 5B                              	POP	EBX
+   498 00000283 5E                              	POP	ESI
+   499 00000284 5D                              	POP	EBP
+   500 00000285 C3                              	RET
+   501 00000286                                 	GLOBAL	_putline
+   502 00000286                                 _putline:
+   503 00000286 55                              	PUSH	EBP
+   504 00000287 89 E5                           	MOV	EBP,ESP
+   505 00000289 8B 45 14                        	MOV	EAX,DWORD [20+EBP]
+   506 0000028C FF 75 18                        	PUSH	DWORD [24+EBP]
+   507 0000028F 83 C0 1C                        	ADD	EAX,28
+   508 00000292 50                              	PUSH	EAX
+   509 00000293 8B 45 10                        	MOV	EAX,DWORD [16+EBP]
+   510 00000296 83 C0 06                        	ADD	EAX,6
+   511 00000299 50                              	PUSH	EAX
+   512 0000029A 8B 45 0C                        	MOV	EAX,DWORD [12+EBP]
+   513 0000029D 83 C0 1C                        	ADD	EAX,28
+   514 000002A0 50                              	PUSH	EAX
+   515 000002A1 8B 45 08                        	MOV	EAX,DWORD [8+EBP]
+   516 000002A4 83 C0 06                        	ADD	EAX,6
+   517 000002A7 50                              	PUSH	EAX
+   518 000002A8 FF 35 [00000EFC]                	PUSH	DWORD [_win]
+   519 000002AE E8 [00000000]                   	CALL	_osak_linewin
+   520 000002B3 C9                              	LEAVE
+   521 000002B4 C3                              	RET
+   522 000002B5                                 	GLOBAL	_putcursor
+   523 000002B5                                 _putcursor:
+   524 000002B5 55                              	PUSH	EBP
+   525 000002B6 89 E5                           	MOV	EBP,ESP
+   526 000002B8 57                              	PUSH	EDI
+   527 000002B9 56                              	PUSH	ESI
+   528 000002BA 8B 7D 08                        	MOV	EDI,DWORD [8+EBP]
+   529 000002BD 53                              	PUSH	EBX
+   530 000002BE 83 C7 03                        	ADD	EDI,3
+   531 000002C1 8B 75 10                        	MOV	ESI,DWORD [16+EBP]
+   532 000002C4 6B DF 0C                        	IMUL	EBX,EDI,12
+   533 000002C7 56                              	PUSH	ESI
+   534 000002C8 8D 43 06                        	LEA	EAX,DWORD [6+EBX]
+   535 000002CB 50                              	PUSH	EAX
+   536 000002CC 6A 0F                           	PUSH	15
+   537 000002CE 50                              	PUSH	EAX
+   538 000002CF 6A 0F                           	PUSH	15
+   539 000002D1 E8 FFFFFFB0                     	CALL	_putline
+   540 000002D6 8D 43 07                        	LEA	EAX,DWORD [7+EBX]
+   541 000002D9 56                              	PUSH	ESI
+   542 000002DA 50                              	PUSH	EAX
+   543 000002DB 8D 43 05                        	LEA	EAX,DWORD [5+EBX]
+   544 000002DE 6A 0E                           	PUSH	14
+   545 000002E0 50                              	PUSH	EAX
+   546 000002E1 6A 0E                           	PUSH	14
+   547 000002E3 E8 FFFFFF9E                     	CALL	_putline
+   548 000002E8 8D 43 08                        	LEA	EAX,DWORD [8+EBX]
+   549 000002EB 83 C4 28                        	ADD	ESP,40
+   550 000002EE 56                              	PUSH	ESI
+   551 000002EF 50                              	PUSH	EAX
+   552 000002F0 8D 43 04                        	LEA	EAX,DWORD [4+EBX]
+   553 000002F3 6A 0D                           	PUSH	13
+   554 000002F5 50                              	PUSH	EAX
+   555 000002F6 6A 0D                           	PUSH	13
+   556 000002F8 E8 FFFFFF89                     	CALL	_putline
+   557 000002FD 8D 43 09                        	LEA	EAX,DWORD [9+EBX]
+   558 00000300 56                              	PUSH	ESI
+   559 00000301 83 C3 03                        	ADD	EBX,3
+   560 00000304 50                              	PUSH	EAX
+   561 00000305 6A 0C                           	PUSH	12
+   562 00000307 53                              	PUSH	EBX
+   563 00000308 6A 0C                           	PUSH	12
+   564 0000030A E8 FFFFFF77                     	CALL	_putline
+   565 0000030F 83 C4 28                        	ADD	ESP,40
+   566 00000312 85 F6                           	TEST	ESI,ESI
+   567 00000314 74 08                           	JE	L45
+   568 00000316                                 L36:
+   569 00000316 8D 65 F4                        	LEA	ESP,DWORD [-12+EBP]
+   570 00000319 5B                              	POP	EBX
+   571 0000031A 5E                              	POP	ESI
+   572 0000031B 5F                              	POP	EDI
+   573 0000031C 5D                              	POP	EBP
+   574 0000031D C3                              	RET
+   575 0000031E                                 L45:
+   576 0000031E 6A 07                           	PUSH	7
+   577 00000320 83 EF 03                        	SUB	EDI,3
+   578 00000323 68 00000094                     	PUSH	148
+   579 00000328 31 DB                           	XOR	EBX,EBX
+   580 0000032A 68 00000119                     	PUSH	281
+   581 0000032F 31 F6                           	XOR	ESI,ESI
+   582 00000331 6A 58                           	PUSH	88
+   583 00000333 6A 6C                           	PUSH	108
+   584 00000335 FF 35 [00000EFC]                	PUSH	DWORD [_win]
+   585 0000033B E8 [00000000]                   	CALL	_api_boxfilwin
+   586 00000340 83 C4 18                        	ADD	ESP,24
+   587 00000343                                 L43:
+   588 00000343 8B 55 0C                        	MOV	EDX,DWORD [12+EBP]
+   589 00000346 8D 04 3A                        	LEA	EAX,DWORD [EDX+EDI*1]
+   590 00000349 69 C0 000000BC                  	IMUL	EAX,EAX,188
+   591 0000034F 8D 04 30                        	LEA	EAX,DWORD [EAX+ESI*1]
+   592 00000352 80 B8 [00000026] 00             	CMP	BYTE [_list+38+EAX],0
+   593 00000359 74 BB                           	JE	L36
+   594 0000035B 05 [00000026]                   	ADD	EAX,_list+38
+   595 00000360 83 C6 1E                        	ADD	ESI,30
+   596 00000363 50                              	PUSH	EAX
+   597 00000364 8D 43 05                        	LEA	EAX,DWORD [5+EBX]
+   598 00000367 6A 1D                           	PUSH	29
+   599 00000369 43                              	INC	EBX
+   600 0000036A 50                              	PUSH	EAX
+   601 0000036B 6A 11                           	PUSH	17
+   602 0000036D E8 FFFFFECE                     	CALL	_putstr
+   603 00000372 6A 02                           	PUSH	2
+   604 00000374 E8 000000E7                     	CALL	_wait
+   605 00000379 83 C4 14                        	ADD	ESP,20
+   606 0000037C 83 FB 04                        	CMP	EBX,4
+   607 0000037F 7E C2                           	JLE	L43
+   608 00000381 EB 93                           	JMP	L36
+   609                                          [SECTION .data]
+   610 00000EEF                                 LC2:
+   611 00000EEF 44 65 73 63 72 69 70 74 69 6F   	DB	"Description:",0x00
+       00000EF9 6E 3A 00 
+   612                                          [SECTION .text]
+   613 00000383                                 	GLOBAL	_putitems
+   614 00000383                                 _putitems:
+   615 00000383 55                              	PUSH	EBP
+   616 00000384 BA 0000000F                     	MOV	EDX,15
+   617 00000389 89 E5                           	MOV	EBP,ESP
+   618 0000038B 57                              	PUSH	EDI
+   619 0000038C 56                              	PUSH	ESI
+   620 0000038D BE 0000000E                     	MOV	ESI,14
+   621 00000392 53                              	PUSH	EBX
+   622 00000393 89 D3                           	MOV	EBX,EDX
+   623 00000395 50                              	PUSH	EAX
+   624 00000396 8B 7D 08                        	MOV	EDI,DWORD [8+EBP]
+   625 00000399 89 F8                           	MOV	EAX,EDI
+   626 0000039B 99                              	CDQ
+   627 0000039C F7 FB                           	IDIV	EBX
+   628 0000039E C6 45 F3 00                     	MOV	BYTE [-13+EBP],0
+   629 000003A2 8D 40 31                        	LEA	EAX,DWORD [49+EAX]
+   630 000003A5 31 DB                           	XOR	EBX,EBX
+   631 000003A7 88 45 F2                        	MOV	BYTE [-14+EBP],AL
+   632 000003AA 8D 45 F2                        	LEA	EAX,DWORD [-14+EBP]
+   633 000003AD 50                              	PUSH	EAX
+   634 000003AE 6A 01                           	PUSH	1
+   635 000003B0 6A 15                           	PUSH	21
+   636 000003B2 6A 05                           	PUSH	5
+   637 000003B4 E8 FFFFFE87                     	CALL	_putstr
+   638 000003B9 6A 07                           	PUSH	7
+   639 000003BB 68 00000094                     	PUSH	148
+   640 000003C0 68 00000118                     	PUSH	280
+   641 000003C5 6A 40                           	PUSH	64
+   642 000003C7 6A 6C                           	PUSH	108
+   643 000003C9 FF 35 [00000EFC]                	PUSH	DWORD [_win]
+   644 000003CF E8 [00000000]                   	CALL	_api_boxfilwin
+   645 000003D4 83 C4 28                        	ADD	ESP,40
+   646 000003D7                                 L51:
+   647 000003D7 6A 07                           	PUSH	7
+   648 000003D9 8D 43 4D                        	LEA	EAX,DWORD [77+EBX]
+   649 000003DC 50                              	PUSH	EAX
+   650 000003DD 8D 43 40                        	LEA	EAX,DWORD [64+EBX]
+   651 000003E0 6A 48                           	PUSH	72
+   652 000003E2 83 C3 0C                        	ADD	EBX,12
+   653 000003E5 50                              	PUSH	EAX
+   654 000003E6 6A 12                           	PUSH	18
+   655 000003E8 FF 35 [00000EFC]                	PUSH	DWORD [_win]
+   656 000003EE E8 [00000000]                   	CALL	_api_boxfilwin
+   657 000003F3 6A 02                           	PUSH	2
+   658 000003F5 E8 00000066                     	CALL	_wait
+   659 000003FA 83 C4 1C                        	ADD	ESP,28
+   660 000003FD 4E                              	DEC	ESI
+   661 000003FE 79 D7                           	JNS	L51
+   662 00000400 89 F8                           	MOV	EAX,EDI
+   663 00000402 31 F6                           	XOR	ESI,ESI
+   664 00000404 69 C0 000000BC                  	IMUL	EAX,EAX,188
+   665 0000040A 8D 98 [00000000]                	LEA	EBX,DWORD [_list+EAX]
+   666 00000410                                 L57:
+   667 00000410 8D 04 37                        	LEA	EAX,DWORD [EDI+ESI*1]
+   668 00000413 83 F8 13                        	CMP	EAX,19
+   669 00000416 7F 24                           	JG	L53
+   670 00000418 53                              	PUSH	EBX
+   671 00000419 8D 46 03                        	LEA	EAX,DWORD [3+ESI]
+   672 0000041C 6A 08                           	PUSH	8
+   673 0000041E 46                              	INC	ESI
+   674 0000041F 50                              	PUSH	EAX
+   675 00000420 81 C3 000000BC                  	ADD	EBX,188
+   676 00000426 6A 03                           	PUSH	3
+   677 00000428 E8 FFFFFE13                     	CALL	_putstr
+   678 0000042D 6A 02                           	PUSH	2
+   679 0000042F E8 0000002C                     	CALL	_wait
+   680 00000434 83 C4 14                        	ADD	ESP,20
+   681 00000437 83 FE 0E                        	CMP	ESI,14
+   682 0000043A 7E D4                           	JLE	L57
+   683 0000043C                                 L53:
+   684 0000043C 68 [00000EEF]                   	PUSH	LC2
+   685 00000441 6A 0D                           	PUSH	13
+   686 00000443 6A 03                           	PUSH	3
+   687 00000445 6A 11                           	PUSH	17
+   688 00000447 E8 FFFFFDF4                     	CALL	_putstr
+   689 0000044C 6A 00                           	PUSH	0
+   690 0000044E 57                              	PUSH	EDI
+   691 0000044F 6A 00                           	PUSH	0
+   692 00000451 E8 FFFFFE5F                     	CALL	_putcursor
+   693 00000456 8D 65 F4                        	LEA	ESP,DWORD [-12+EBP]
+   694 00000459 5B                              	POP	EBX
+   695 0000045A 89 F0                           	MOV	EAX,ESI
+   696 0000045C 5E                              	POP	ESI
+   697 0000045D 5F                              	POP	EDI
+   698 0000045E 5D                              	POP	EBP
+   699 0000045F C3                              	RET
+   700 00000460                                 	GLOBAL	_wait
+   701 00000460                                 _wait:
+   702 00000460 55                              	PUSH	EBP
+   703 00000461 89 E5                           	MOV	EBP,ESP
+   704 00000463 FF 75 08                        	PUSH	DWORD [8+EBP]
+   705 00000466 FF 35 [00000F00]                	PUSH	DWORD [_timer]
+   706 0000046C E8 [00000000]                   	CALL	_api_settimer
+   707 00000471 59                              	POP	ECX
+   708 00000472 58                              	POP	EAX
+   709 00000473                                 L62:
+   710 00000473 6A 01                           	PUSH	1
+   711 00000475 E8 [00000000]                   	CALL	_api_getkey
+   712 0000047A 5A                              	POP	EDX
+   713 0000047B 83 C0 80                        	ADD	EAX,-128
+   714 0000047E 75 F3                           	JNE	L62
+   715 00000480 C9                              	LEAVE
+   716 00000481 C3                              	RET
+   717                                          [SECTION .data]
+   718 00000EFC                                 	ALIGNB	4
+   719 00000EFC                                 _win:
+   720 00000EFC 00 00 00 00                     	RESB	4
+   721                                          [SECTION .data]
+   722 00000F00                                 	ALIGNB	4
+   723 00000F00                                 _timer:
+   724 00000F00 00 00 00 00                     	RESB	4
