@@ -1,0 +1,10 @@
+	.file	"bootpack.c"
+	.text
+	.balign 2
+.globl _HariMain
+	.def	_HariMain;	.scl	2;	.type	32;	.endef
+_HariMain:
+	pushl	%ebp
+	movl	%esp, %ebp
+L2:
+	jmp	L2

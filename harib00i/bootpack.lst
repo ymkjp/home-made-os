@@ -1,0 +1,13 @@
+     1 00000000                                 [FORMAT "WCOFF"]
+     2 00000000                                 [INSTRSET "i486p"]
+     3 00000000                                 [OPTIMIZE 1]
+     4 00000000                                 [OPTION 1]
+     5 00000000                                 [BITS 32]
+     6 00000000                                 [FILE "bootpack.c"]
+     7                                          [SECTION .text]
+     8 00000000                                 	GLOBAL	_HariMain
+     9 00000000                                 _HariMain:
+    10 00000000 55                              	PUSH	EBP
+    11 00000001 89 E5                           	MOV	EBP,ESP
+    12 00000003                                 L2:
+    13 00000003 EB FE                           	JMP	L2
